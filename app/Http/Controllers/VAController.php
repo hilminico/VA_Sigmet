@@ -12,9 +12,14 @@ class VAController extends Controller
         $data = array();
         $crawler = Goutte::request('GET', 'http://www.bom.gov.au/aviation/volcanic-ash/au-va-sigmet.shtml');
         $crawler->filter('.middle-column-round .product')->each(function ($node) {
-            $va = Va::create([
-                'dataraw' => $node->text()
-            ]);
+            $check = Va::where('dataraw', '=', $node->text())->exists();
+            if(!$check){
+                $va = Va::create([
+                    'dataraw' => $node->text()
+                ]);
+            }else{
+                return false;
+            }
         });
         return view('welcome');    
     }
