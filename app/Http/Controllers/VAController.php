@@ -12,6 +12,7 @@ class VAController extends Controller
 {
     public function index(){
         $data = array();
+        $response = "";
         $crawler = Goutte::request('GET', 'http://www.bom.gov.au/aviation/volcanic-ash/au-va-sigmet.shtml');
         $crawler->filter('.middle-column-round .product')->each(function ($node) {
             $check = Va::where('dataraw', '=', $node->text())->exists();
@@ -28,7 +29,7 @@ class VAController extends Controller
         $parsedata = ParseSigmet::parsedata($getdata);
 
         $string = "AGGG";
-        $hasil = ParseSigmet::fir($string);
+        $hasil = ParseSigmet::fir($string,$response);
         dd($hasil);
 
         dd($parsedata);
