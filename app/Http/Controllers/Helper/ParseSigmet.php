@@ -17,11 +17,14 @@ class ParseSigmet extends Controller
     public static function parsedata($rawstring){
 
         // Preporcessing remove special character
-        $rawstring = str_replace('***** ','',$rawstring);
+        // stopword
+        $rawstring = str_replace('***** ','',$rawstring); 
         $rawstring = str_replace('*****','',$rawstring);
         $rawstring = str_replace(',','',$rawstring);
+        
+        //tokenizing 
+        $piece[] = explode(" ", $rawstring);
 
-        $piece = explode(" ", $rawstring);
         return $piece;
     }
 
