@@ -29,12 +29,38 @@ class VAController extends Controller
         foreach($getdata as $data){
 
             $parsedata[] = ParseSigmet::parsedata($data->dataraw); //preprosessing 
-            $parsedata[$index]['1'] = $data->dataraw;            
 
-            $orginating[] =ParseSigmet::OriginatingOffice($data->dataraw);
+            $parsedata[$index]['1'] = $data->dataraw;            
+    
+            $parsedata[$index]['2'] = explode(" ", $parsedata[$index]['0']);
+
+            for ($i=0 ; $i < count($parsedata[$index]['2']);$i++){
+
+                $fir = ParseSigmet::FIR($parsedata[$index]['2'][$i]);
+                if(!(is_null($fir))){
+                    $parsedata[$index]['3'][$i] = $fir;
+                }
+
+                $org = ParseSigmet::OriginatingOffice($parsedata[$index]['2'][$i]);
+                if(!(is_null($org))){
+                    $parsedata[$index]['3'][$i] = $org;
+                }
+
+                $singkatan = ParseSigmet::singkatan($parsedata[$index]['2'][$i]);
+
+                if(!(is_null($singkatan))){
+                    $parsedata[$index]['3'][$i] = $singkatan;
+                }
+
+                $fir= null;
+                $singkatan= null;
+                $org= null;
+
+            }
 
             $index = $index + 1 ;
         }
+        dd($parsedata);
         return view('welcome')->with('getdata',$parsedata);    
     }
 }

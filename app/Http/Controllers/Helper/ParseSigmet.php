@@ -21,6 +21,8 @@ class ParseSigmet extends Controller
         $rawstring = str_replace('***** ','',$rawstring); 
         $rawstring = str_replace('*****','',$rawstring);
         $rawstring = str_replace(',','',$rawstring);
+        $rawstring = str_replace('- ','-',$rawstring);
+        $rawstring = str_replace(' -','-',$rawstring);
         
         //tokenizing 
         // $piece[] = explode(" ", $rawstring);
@@ -29,1250 +31,1256 @@ class ParseSigmet extends Controller
         return $piece;
     }
 
+    public function ReceivedAt(){
+        
+    }
+
     public static function FIR($kode){
         $response ='';
         if($fir = 'AGGG'){
-            $response .= "Honiara";
+            $response = "Honiara";
              
         }
         elseif($fir =='ANAU'){
-            $response .= "Nauru";
+            $response = "Nauru";
              
         }
         elseif($fir =='AYPM'){
-            $response .= "Port Moresby";
+            $response = "Port Moresby";
              
         }
         elseif($fir =='BGGL'){
-            $response .= "Nuuk";
+            $response = "Nuuk";
              
         }
         elseif($fir =='BIRD'){
-            $response .= "Reykjavik";
+            $response = "Reykjavik";
              
         }
         elseif($fir =='CZEG'){
-            $response .= "Edmonton";
+            $response = "Edmonton";
              
         }
         elseif($fir =='CZQM'){
-            $response .= "Moncton Southern";
+            $response = "Moncton Southern";
              
         }
         elseif($fir =='CZQX'){
-            $response .= "Gander Domestic";
+            $response = "Gander Domestic";
              
         }
         elseif($fir =='CZUL'){
-            $response .= "Montreal";
+            $response = "Montreal";
              
         }
         elseif($fir =='CZVR'){
-            $response .= "Vancouver";
+            $response = "Vancouver";
              
         }
         elseif($fir =='CZWG'){
-            $response .= "Winnipeg";
+            $response = "Winnipeg";
              
         }
         elseif($fir =='CZYZ'){
-            $response .= "Toronto";
+            $response = "Toronto";
              
         }
         elseif($fir =='DAAA'){
-            $response .= "Alger";
+            $response = "Alger";
              
         }
         elseif($fir =='DGAC'){
-            $response .= "Accra";
+            $response = "Accra";
              
         }
         elseif($fir =='DIII'){
-            $response .= "Abidjan";
+            $response = "Abidjan";
              
         }
         elseif($fir =='DNKK'){
-            $response .= "Kano";
+            $response = "Kano";
              
         }
         elseif($fir =='DRRR'){
-            $response .= "Niamey";
+            $response = "Niamey";
              
         }
         elseif($fir =='DTTC'){
-            $response .= "Tunis";
+            $response = "Tunis";
              
         }
         elseif($fir =='EZZZ'){
-            $response .= "Eurocontrol";
+            $response = "Eurocontrol";
              
         }
         elseif($fir =='EBBU'){
-            $response .= "Brussels";
+            $response = "Brussels";
              
         }
         elseif($fir =='EDBB'){
-            $response .= "Berlin";
+            $response = "Berlin";
              
         }
         elseif($fir =='EDGG'){
-            $response .= "Langen";
+            $response = "Langen";
              
         }
         elseif($fir =='EDLL'){
-            $response .= "Düsseldorf";
+            $response = "Düsseldorf";
              
         }
         elseif($fir =='EDMM'){
-            $response .= "Munich";
+            $response = "Munich";
              
         }
         elseif($fir =='EDUU'){
-            $response .= "Rhein";
+            $response = "Rhein";
              
         }
         elseif($fir =='EDVV'){
-            $response .= "Hannover";
+            $response = "Hannover";
              
         }
         elseif($fir =='EDWW'){
-            $response .= "Bremen";
+            $response = "Bremen";
              
         }
         elseif($fir =='EDYY'){
-            $response .= "Maastricht";
+            $response = "Maastricht";
              
         }
         elseif($fir =='EETT'){
-            $response .= "Tallinn";
+            $response = "Tallinn";
              
         }
         elseif($fir =='EFIN'){
-            $response .= "Finland";
+            $response = "Finland";
              
         }
         elseif($fir =='EGGX'){
-            $response .= "Shanwick Oceanic";
+            $response = "Shanwick Oceanic";
              
         }
         elseif($fir =='EGPX'){
-            $response .= "Scottish";
+            $response = "Scottish";
              
         }
         elseif($fir =='EGQQ'){
-            $response .= "Scottish (Mil)";
+            $response = "Scottish (Mil)";
              
         }
         elseif($fir =='EGTT'){
-            $response .= "London";
+            $response = "London";
              
         }
         elseif($fir =='EHAA'){
-            $response .= "Amsterdam";
+            $response = "Amsterdam";
              
         }
         elseif($fir =='EISN'){
-            $response .= "Shannon";
+            $response = "Shannon";
              
         }
         elseif($fir =='EKDK'){
-            $response .= "Copenhagen";
+            $response = "Copenhagen";
              
         }
         elseif($fir =='ENOB'){
-            $response .= "Bodo Oceanic";
+            $response = "Bodo Oceanic";
              
         }
         elseif($fir =='ENOR'){
-            $response .= "Norway";
+            $response = "Norway";
              
         }
         elseif($fir =='EPWW'){
-            $response .= "Warszawa";
+            $response = "Warszawa";
              
         }
         elseif($fir =='ESAA'){
-            $response .= "Sweden";
+            $response = "Sweden";
              
         }
         elseif($fir =='ESMM'){
-            $response .= "Malmo";
+            $response = "Malmo";
              
         }
         elseif($fir =='ESOS'){
-            $response .= "Stockholm";
+            $response = "Stockholm";
              
         }
         elseif($fir =='EVRR'){
-            $response .= "Riga";
+            $response = "Riga";
              
         }
         elseif($fir =='EYVL'){
-            $response .= "Vilnius";
+            $response = "Vilnius";
              
         }
         elseif($fir =='FABL'){
-            $response .= "Bloemfontein";
+            $response = "Bloemfontein";
              
         }
         elseif($fir =='FACA'){
-            $response .= "Capetown";
+            $response = "Capetown";
              
         }
         elseif($fir =='FACT'){
-            $response .= "Capetown";
+            $response = "Capetown";
              
         }
         elseif($fir =='FADN'){
-            $response .= "Durban";
+            $response = "Durban";
              
         }
         elseif($fir =='FAJO'){
-            $response .= "Johannesburg Oceanic";
+            $response = "Johannesburg Oceanic";
              
         }
         elseif($fir =='FAJX'){
-            $response .= "Johannesburg";
+            $response = "Johannesburg";
              
         }
         elseif($fir =='FAPX'){
-            $response .= "Port Elizabeth";
+            $response = "Port Elizabeth";
              
         }
         elseif($fir =='FBGR'){
-            $response .= "Gaborone";
+            $response = "Gaborone";
              
         }
         elseif($fir =='FCCC'){
-            $response .= "Brazzaville";
+            $response = "Brazzaville";
              
         }
         elseif($fir =='FIMM'){
-            $response .= "Mauritius";
+            $response = "Mauritius";
              
         }
         elseif($fir =='FKKK'){
-            $response .= "Douala";
+            $response = "Douala";
              
         }
         elseif($fir =='FLFI'){
-            $response .= "Lusaka";
+            $response = "Lusaka";
              
         }
         elseif($fir =='FMCX'){
-            $response .= "Comoros";
+            $response = "Comoros";
              
         }
         elseif($fir =='FMMM'){
-            $response .= "Antananarivo";
+            $response = "Antananarivo";
              
         }
         elseif($fir =='FNAN'){
-            $response .= "Luanda";
+            $response = "Luanda";
              
         }
         elseif($fir =='FOOO'){
-            $response .= "Libreville";
+            $response = "Libreville";
              
         }
         elseif($fir =='FQBE'){
-            $response .= "Beira";
+            $response = "Beira";
              
         }
         elseif($fir =='FSSS'){
-            $response .= "Seychelles";
+            $response = "Seychelles";
              
         }
         elseif($fir =='FTTT'){
-            $response .= "N'Djamena";
+            $response = "N'Djamena";
              
         }
         elseif($fir =='FVHF'){
-            $response .= "Harare";
+            $response = "Harare";
              
         }
         elseif($fir =='FWLL'){
-            $response .= "Lilongwe";
+            $response = "Lilongwe";
              
         }
         elseif($fir =='FYWH'){
-            $response .= "Windhoek";
+            $response = "Windhoek";
              
         }
         elseif($fir =='FZZA'){
-            $response .= "Kinshasa";
+            $response = "Kinshasa";
              
         }
         elseif($fir =='GCCC'){
-            $response .= "Canarias";
+            $response = "Canarias";
              
         }
         elseif($fir =='GLRX'){
-            $response .= "Roberts";
+            $response = "Roberts";
              
         }
         elseif($fir =='GMMM'){
-            $response .= "Casablanca";
+            $response = "Casablanca";
              
         }
         elseif($fir =='GOOO'){
-            $response .= "Dakar Oceanic";
+            $response = "Dakar Oceanic";
              
         }
         elseif($fir =='GVSC'){
-            $response .= "Sal Oceanic";
+            $response = "Sal Oceanic";
              
         }
         elseif($fir =='HAAA'){
-            $response .= "Addis Ababa";
+            $response = "Addis Ababa";
              
         }
         elseif($fir =='HBBA'){
-            $response .= "Bujumbura";
+            $response = "Bujumbura";
              
         }
         elseif($fir =='HCSM'){
-            $response .= "Mogadishu";
+            $response = "Mogadishu";
              
         }
         elseif($fir =='HECC'){
-            $response .= "Cairo";
+            $response = "Cairo";
              
         }
         elseif($fir =='HHAA'){
-            $response .= "Asmara";
+            $response = "Asmara";
              
         }
         elseif($fir =='HKNA'){
-            $response .= "Nairobi";
+            $response = "Nairobi";
              
         }
         elseif($fir =='HLLL'){
-            $response .= "Tripoli";
+            $response = "Tripoli";
              
         }
         elseif($fir =='HRYR'){
-            $response .= "Kigali";
+            $response = "Kigali";
              
         }
         elseif($fir =='HSSX'){
-            $response .= "Khartoum";
+            $response = "Khartoum";
              
         }
         elseif($fir =='HTDC'){
-            $response .= "Dar Es Salaam";
+            $response = "Dar Es Salaam";
              
         }
         elseif($fir =='HUEC'){
-            $response .= "Entebbe";
+            $response = "Entebbe";
              
         }
         elseif($fir =='KZAB'){
-            $response .= "Albuquerque";
+            $response = "Albuquerque";
              
         }
         elseif($fir =='KZAK'){
-            $response .= "Oakland Oceanic";
+            $response = "Oakland Oceanic";
              
         }
         elseif($fir =='KZAU'){
-            $response .= "Chicago";
+            $response = "Chicago";
              
         }
         elseif($fir =='KZBW'){
-            $response .= "Boston";
+            $response = "Boston";
              
         }
         elseif($fir =='KZDC'){
-            $response .= "Washington";
+            $response = "Washington";
              
         }
         elseif($fir =='KZDV'){
-            $response .= "Denver";
+            $response = "Denver";
              
         }
         elseif($fir =='KZFW'){
-            $response .= "Ft Worth";
+            $response = "Ft Worth";
              
         }
         elseif($fir =='KZHU'){
-            $response .= "Houston";
+            $response = "Houston";
              
         }
         elseif($fir =='KZID'){
-            $response .= "Indianapolis";
+            $response = "Indianapolis";
              
         }
         elseif($fir =='KZJX'){
-            $response .= "Jacksonville";
+            $response = "Jacksonville";
              
         }
         elseif($fir =='KZKC'){
-            $response .= "Kansas City";
+            $response = "Kansas City";
              
         }
         elseif($fir =='KZLA'){
-            $response .= "Los Angeles";
+            $response = "Los Angeles";
              
         }
         elseif($fir =='KZLC'){
-            $response .= "Salt Lake";
+            $response = "Salt Lake";
              
         }
         elseif($fir =='KZMA'){
-            $response .= "Miami";
+            $response = "Miami";
              
         }
         elseif($fir =='KZME'){
-            $response .= "Memphis";
+            $response = "Memphis";
              
         }
         elseif($fir =='KZMP'){
-            $response .= "Minneapolis";
+            $response = "Minneapolis";
              
         }
         elseif($fir =='KZNY'){
-            $response .= "New York";
+            $response = "New York";
              
         }
         elseif($fir =='KZOA'){
-            $response .= "Oakland";
+            $response = "Oakland";
              
         }
         elseif($fir =='KZOB'){
-            $response .= "Cleveland";
+            $response = "Cleveland";
              
         }
         elseif($fir =='KZSE'){
-            $response .= "Seattle";
+            $response = "Seattle";
              
         }
         elseif($fir =='KZTL'){
-            $response .= "Atlanta";
+            $response = "Atlanta";
              
         }
         elseif($fir =='KZWY'){
-            $response .= "New York Oceanic";
+            $response = "New York Oceanic";
              
         }
         elseif($fir =='LAAA'){
-            $response .= "Tirana";
+            $response = "Tirana";
              
         }
         elseif($fir =='LBSR'){
-            $response .= "Sofia";
+            $response = "Sofia";
              
         }
         elseif($fir =='LBWR'){
-            $response .= "Varna";
+            $response = "Varna";
              
         }
         elseif($fir =='LCCC'){
-            $response .= "Nicosia";
+            $response = "Nicosia";
              
         }
         elseif($fir =='LDZO'){
-            $response .= "Zagreb";
+            $response = "Zagreb";
              
         }
         elseif($fir =='LECB'){
-            $response .= "Barcelona";
+            $response = "Barcelona";
              
         }
         elseif($fir =='LECM'){
-            $response .= "Madrid";
+            $response = "Madrid";
              
         }
         elseif($fir =='LECS'){
-            $response .= "Sevilla";
+            $response = "Sevilla";
              
         }
         elseif($fir =='LFBB'){
-            $response .= "Bordeaux";
+            $response = "Bordeaux";
              
         }
         elseif($fir =='LFEE'){
-            $response .= "Reims";
+            $response = "Reims";
              
         }
         elseif($fir =='LFFF'){
-            $response .= "Paris";
+            $response = "Paris";
              
         }
         elseif($fir =='LFMM'){
-            $response .= "Marseille";
+            $response = "Marseille";
              
         }
         elseif($fir =='LFRR'){
-            $response .= "Brest";
+            $response = "Brest";
              
         }
         elseif($fir =='LGGG'){
-            $response .= "Athens";
+            $response = "Athens";
              
         }
         elseif($fir =='LHCC'){
-            $response .= "Budapest";
+            $response = "Budapest";
              
         }
         elseif($fir =='LIBB'){
-            $response .= "Brindisi";
+            $response = "Brindisi";
              
         }
         elseif($fir =='LIMM'){
-            $response .= "Milano";
+            $response = "Milano";
              
         }
         elseif($fir =='LIRR'){
-            $response .= "Roma";
+            $response = "Roma";
              
         }
         elseif($fir =='LJLA'){
-            $response .= "Ljubljana";
+            $response = "Ljubljana";
              
         }
         elseif($fir =='LKAA'){
-            $response .= "Praha";
+            $response = "Praha";
              
         }
         elseif($fir =='LLLL'){
-            $response .= "Tel-Aviv";
+            $response = "Tel-Aviv";
              
         }
         elseif($fir =='LMMM'){
-            $response .= "Malta";
+            $response = "Malta";
              
         }
         elseif($fir =='LOVV'){
-            $response .= "Wien";
+            $response = "Wien";
              
         }
         elseif($fir =='LPPC'){
-            $response .= "Lisboa";
+            $response = "Lisboa";
              
         }
         elseif($fir =='LPPO'){
-            $response .= "Santa Maria Oceanic";
+            $response = "Santa Maria Oceanic";
              
         }
         elseif($fir =='LQSB'){
-            $response .= "Sarajevo";
+            $response = "Sarajevo";
              
         }
         elseif($fir =='LRBB'){
-            $response .= "Bucuresti";
+            $response = "Bucuresti";
              
         }
         elseif($fir =='LSAG'){
-            $response .= "Geneve";
+            $response = "Geneve";
              
         }
         elseif($fir =='LSAS'){
-            $response .= "Switzerland";
+            $response = "Switzerland";
              
         }
         elseif($fir =='LSAZ'){
-            $response .= "Zurich";
+            $response = "Zurich";
              
         }
         elseif($fir =='LTAA'){
-            $response .= "Ankara";
+            $response = "Ankara";
              
         }
         elseif($fir =='LTBB'){
-            $response .= "Istanbul";
+            $response = "Istanbul";
              
         }
         elseif($fir =='LUUU'){
-            $response .= "Chisinau";
+            $response = "Chisinau";
              
         }
         elseif($fir =='LWSS'){
-            $response .= "Skopje";
+            $response = "Skopje";
              
         }
         elseif($fir =='LYBA'){
-            $response .= "Beograd";
+            $response = "Beograd";
              
         }
         elseif($fir =='LZBB'){
-            $response .= "Bratislava";
+            $response = "Bratislava";
              
         }
         elseif($fir =='MDCS'){
-            $response .= "Santo Domingo";
+            $response = "Santo Domingo";
              
         }
         elseif($fir =='MHTG'){
-            $response .= "Central American";
+            $response = "Central American";
              
         }
         elseif($fir =='MKJK'){
-            $response .= "Kingston";
+            $response = "Kingston";
              
         }
         elseif($fir =='MMEX'){
-            $response .= "Mexico";
+            $response = "Mexico";
              
         }
         elseif($fir =='MMFO'){
-            $response .= "Mazatlan Oceanic";
+            $response = "Mazatlan Oceanic";
              
         }
         elseif($fir =='MMFR'){
-            $response .= "Mexico";
+            $response = "Mexico";
              
         }
         elseif($fir =='MMID'){
-            $response .= "Merida";
+            $response = "Merida";
              
         }
         elseif($fir =='MMTY'){
-            $response .= "Monterrey";
+            $response = "Monterrey";
              
         }
         elseif($fir =='MMZT'){
-            $response .= "Mazatlan";
+            $response = "Mazatlan";
              
         }
         elseif($fir =='MPZL'){
-            $response .= "Panama";
+            $response = "Panama";
              
         }
         elseif($fir =='MTEG'){
-            $response .= "Port-Au-Prince";
+            $response = "Port-Au-Prince";
              
         }
         elseif($fir =='MUFH'){
-            $response .= "Habana";
+            $response = "Habana";
              
         }
         elseif($fir =='MYNA'){
-            $response .= "Nassau";
+            $response = "Nassau";
              
         }
         elseif($fir =='NFFF'){
-            $response .= "Nadi";
+            $response = "Nadi";
              
         }
         elseif($fir =='NTTT'){
-            $response .= "Tahiti";
+            $response = "Tahiti";
              
         }
         elseif($fir =='NWWX'){
-            $response .= "Noumea";
+            $response = "Noumea";
              
         }
         elseif($fir =='NZZC'){
-            $response .= "New Zealand";
+            $response = "New Zealand";
              
         }
         elseif($fir =='NZZO'){
-            $response .= "Auckland Oceanic";
+            $response = "Auckland Oceanic";
              
         }
         elseif($fir =='OAKX'){
-            $response .= "Kabul";
+            $response = "Kabul";
              
         }
         elseif($fir =='OBBB'){
-            $response .= "Bahrain";
+            $response = "Bahrain";
              
         }
         elseif($fir =='OEJD'){
-            $response .= "Jeddah";
+            $response = "Jeddah";
              
         }
         elseif($fir =='OIIX'){
-            $response .= "Tehran";
+            $response = "Tehran";
              
         }
         elseif($fir =='OJAC'){
-            $response .= "Amman";
+            $response = "Amman";
              
         }
         elseif($fir =='OKAC'){
-            $response .= "Kuwait";
+            $response = "Kuwait";
              
         }
         elseif($fir =='OLBB'){
-            $response .= "Beirut";
+            $response = "Beirut";
              
         }
         elseif($fir =='OMAE'){
-            $response .= "Emirates";
+            $response = "Emirates";
              
         }
         elseif($fir =='OOMM'){
-            $response .= "Muscat";
+            $response = "Muscat";
              
         }
         elseif($fir =='OPKR'){
-            $response .= "Karachi";
+            $response = "Karachi";
              
         }
         elseif($fir =='OPLR'){
-            $response .= "Lahore";
+            $response = "Lahore";
              
         }
         elseif($fir =='ORBB'){
-            $response .= "Baghdad";
+            $response = "Baghdad";
              
         }
         elseif($fir =='ORMM'){
-            $response .= "ORMM";
+            $response = "ORMM";
              
         }
         elseif($fir =='OSTT'){
-            $response .= "Damascus";
+            $response = "Damascus";
              
         }
         elseif($fir =='OYSC'){
-            $response .= "Sanaa";
+            $response = "Sanaa";
              
         }
         elseif($fir =='PAZA'){
-            $response .= "Anchorage";
+            $response = "Anchorage";
              
         }
         elseif($fir =='PAZN'){
-            $response .= "Anchorage Oceanic";
+            $response = "Anchorage Oceanic";
              
         }
         elseif($fir =='PHZH'){
-            $response .= "Honolulu";
+            $response = "Honolulu";
              
         }
         elseif($fir =='RCAA'){
-            $response .= "Taipei";
+            $response = "Taipei";
              
         }
         elseif($fir =='RJJJ'){
-            $response .= "Fukuoka";
+            $response = "Fukuoka";
              
         }
         elseif($fir =='RKRR'){
-            $response .= "Incheon";
+            $response = "Incheon";
              
         }
         elseif($fir =='RPHI'){
-            $response .= "Manila";
+            $response = "Manila";
              
         }
         elseif($fir =='SACF'){
-            $response .= "Cordoba";
+            $response = "Cordoba";
              
         }
         elseif($fir =='SACU'){
-            $response .= "Cordoba";
+            $response = "Cordoba";
              
         }
         elseif($fir =='SAEF'){
-            $response .= "Ezeiza";
+            $response = "Ezeiza";
              
         }
         elseif($fir =='SAEU'){
-            $response .= "Ezeiza";
+            $response = "Ezeiza";
              
         }
         elseif($fir =='SAMF'){
-            $response .= "Mendoza";
+            $response = "Mendoza";
              
         }
         elseif($fir =='SAMV'){
-            $response .= "Mendoza";
+            $response = "Mendoza";
              
         }
         elseif($fir =='SARR'){
-            $response .= "Resistencia";
+            $response = "Resistencia";
              
         }
         elseif($fir =='SAVF'){
-            $response .= "Comodoro Rivadavia";
+            $response = "Comodoro Rivadavia";
              
         }
         elseif($fir =='SAVU'){
-            $response .= "Comodoro Rivadavia";
+            $response = "Comodoro Rivadavia";
              
         }
         elseif($fir =='SBAO'){
-            $response .= "Atlantico";
+            $response = "Atlantico";
              
         }
         elseif($fir =='SBAZ'){
-            $response .= "Amazonica";
+            $response = "Amazonica";
              
         }
         elseif($fir =='SBBS'){
-            $response .= "Brasilia";
+            $response = "Brasilia";
              
         }
         elseif($fir =='SBCW'){
-            $response .= "Curitiba";
+            $response = "Curitiba";
              
         }
         elseif($fir =='SBRE'){
-            $response .= "Recife";
+            $response = "Recife";
              
         }
         elseif($fir =='SCCZ'){
-            $response .= "Punta Arenas";
+            $response = "Punta Arenas";
              
         }
         elseif($fir =='SCEZ'){
-            $response .= "Santiago";
+            $response = "Santiago";
              
         }
         elseif($fir =='SCFZ'){
-            $response .= "Antofagasta";
+            $response = "Antofagasta";
              
         }
         elseif($fir =='SCIZ'){
-            $response .= "Easter";
+            $response = "Easter";
              
         }
         elseif($fir =='SCTZ'){
-            $response .= "Puerto Montt";
+            $response = "Puerto Montt";
              
         }
         elseif($fir =='SEFG'){
-            $response .= "Guayaquil";
+            $response = "Guayaquil";
              
         }
         elseif($fir =='SGFA'){
-            $response .= "Asuncion";
+            $response = "Asuncion";
              
         }
         elseif($fir =='SKEC'){
-            $response .= "Barranquilla";
+            $response = "Barranquilla";
              
         }
         elseif($fir =='SKED'){
-            $response .= "Bogota";
+            $response = "Bogota";
              
         }
         elseif($fir =='SLLF'){
-            $response .= "La Paz";
+            $response = "La Paz";
              
         }
         elseif($fir =='SMPM'){
-            $response .= "Paramaribo";
+            $response = "Paramaribo";
              
         }
         elseif($fir =='SOOO'){
-            $response .= "Rochambeau";
+            $response = "Rochambeau";
              
         }
         elseif($fir =='SPIM'){
-            $response .= "Lima";
+            $response = "Lima";
              
         }
         elseif($fir =='SUEO'){
-            $response .= "Montevideo";
+            $response = "Montevideo";
              
         }
         elseif($fir =='SVZM'){
-            $response .= "Maiquetia";
+            $response = "Maiquetia";
              
         }
         elseif($fir =='SYGC'){
-            $response .= "Georgetown";
+            $response = "Georgetown";
              
         }
         elseif($fir =='TJZS'){
-            $response .= "San Juan";
+            $response = "San Juan";
              
         }
         elseif($fir =='TNCF'){
-            $response .= "Curacao";
+            $response = "Curacao";
              
         }
         elseif($fir =='TTZP'){
-            $response .= "Piarco";
+            $response = "Piarco";
              
         }
         elseif($fir =='UAAX'){
-            $response .= "Almaty";
+            $response = "Almaty";
              
         }
         elseif($fir =='UACX'){
-            $response .= "Astana";
+            $response = "Astana";
              
         }
         elseif($fir =='UAFX'){
-            $response .= "Bishkek";
+            $response = "Bishkek";
              
         }
         elseif($fir =='UASS'){
-            $response .= "Semipalatinsk";
+            $response = "Semipalatinsk";
              
         }
         elseif($fir =='UDDD'){
-            $response .= "Yerevan";
+            $response = "Yerevan";
              
         }
         elseif($fir =='UEMH'){
-            $response .= "Tyoply Klyuch";
+            $response = "Tyoply Klyuch";
              
         }
         elseif($fir =='UENN'){
-            $response .= "Nyurba";
+            $response = "Nyurba";
              
         }
         elseif($fir =='UESS'){
-            $response .= "Chersky";
+            $response = "Chersky";
              
         }
         elseif($fir =='UESU'){
-            $response .= "Zyryanka";
+            $response = "Zyryanka";
              
         }
         elseif($fir =='UEVV'){
-            $response .= "Gigansk";
+            $response = "Gigansk";
              
         }
         elseif($fir =='UGEE'){
-            $response .= "Yerevan/Zvartnots";
+            $response = "Yerevan/Zvartnots";
              
         }
         elseif($fir =='UGGG'){
-            $response .= "Tbilisi";
+            $response = "Tbilisi";
              
         }
         elseif($fir =='UHBI'){
-            $response .= "Magdagachi";
+            $response = "Magdagachi";
              
         }
         elseif($fir =='UHMI'){
-            $response .= "Mys Shmidta";
+            $response = "Mys Shmidta";
              
         }
         elseif($fir =='UHMP'){
-            $response .= "Pevek";
+            $response = "Pevek";
              
         }
         elseif($fir =='UHNN'){
-            $response .= "Nikolayevsk-na-Amure";
+            $response = "Nikolayevsk-na-Amure";
              
         }
         elseif($fir =='UHPT'){
-            $response .= "Tilichiki";
+            $response = "Tilichiki";
              
         }
         elseif($fir =='UHPU'){
-            $response .= "Ust-Khairyozovo";
+            $response = "Ust-Khairyozovo";
              
         }
         elseif($fir =='UHSH'){
-            $response .= "Okha";
+            $response = "Okha";
              
         }
         elseif($fir =='UIKB'){
-            $response .= "Bodaybo";
+            $response = "Bodaybo";
              
         }
         elseif($fir =='UIKK'){
-            $response .= "Kirensk";
+            $response = "Kirensk";
              
         }
         elseif($fir =='UKBV'){
-            $response .= "Kyiv";
+            $response = "Kyiv";
              
         }
         elseif($fir =='UKCV'){
-            $response .= "Donetsk";
+            $response = "Donetsk";
              
         }
         elseif($fir =='UKDV'){
-            $response .= "Dnepropetrovsk";
+            $response = "Dnepropetrovsk";
              
         }
         elseif($fir =='UKFV'){
-            $response .= "Simferopol";
+            $response = "Simferopol";
              
         }
         elseif($fir =='UKHV'){
-            $response .= "Kharkiv";
+            $response = "Kharkiv";
              
         }
         elseif($fir =='UKLV'){
-            $response .= "Lviv";
+            $response = "Lviv";
              
         }
         elseif($fir =='UKOV'){
-            $response .= "Odesa";
+            $response = "Odesa";
              
         }
         elseif($fir =='ULLL'){
-            $response .= "Sankt Peterburg";
+            $response = "Sankt Peterburg";
              
         }
         elseif($fir =='ULOL'){
-            $response .= "Velikiye Luki";
+            $response = "Velikiye Luki";
              
         }
         elseif($fir =='UMKD'){
-            $response .= "Kazan";
+            $response = "Kazan";
              
         }
         elseif($fir =='UMMV'){
-            $response .= "Minsk";
+            $response = "Minsk";
              
         }
         elseif($fir =='UNLL'){
-            $response .= "Kolpashevo";
+            $response = "Kolpashevo";
              
         }
         elseif($fir =='UOTT'){
-            $response .= "Turukhansk";
+            $response = "Turukhansk";
              
         }
         elseif($fir =='URRV'){
-            $response .= "Rostov-Na-Donu";
+            $response = "Rostov-Na-Donu";
              
         }
         elseif($fir =='USDK'){
-            $response .= "Mys Kamenny";
+            $response = "Mys Kamenny";
              
         }
         elseif($fir =='USHB'){
-            $response .= "Beryozovo";
+            $response = "Beryozovo";
              
         }
         elseif($fir =='USHH'){
-            $response .= "Khanty-Mansiysk";
+            $response = "Khanty-Mansiysk";
              
         }
         elseif($fir =='UTAK'){
-            $response .= "Turkmenbashi";
+            $response = "Turkmenbashi";
              
         }
         elseif($fir =='UTNR'){
-            $response .= "Nukus";
+            $response = "Nukus";
              
         }
         elseif($fir =='UTSD'){
-            $response .= "Samarkand";
+            $response = "Samarkand";
              
         }
         elseif($fir =='UTTR'){
-            $response .= "Tashkent";
+            $response = "Tashkent";
              
         }
         elseif($fir =='UUWV'){
-            $response .= "Moscow";
+            $response = "Moscow";
              
         }
         elseif($fir =='UUYW'){
-            $response .= "Vorkuta";
+            $response = "Vorkuta";
              
         }
         elseif($fir =='UUYY'){
-            $response .= "Syktyvkar";
+            $response = "Syktyvkar";
              
         }
         elseif($fir =='UWOO'){
-            $response .= "Orenburg/Tsentralny";
+            $response = "Orenburg/Tsentralny";
              
         }
         elseif($fir =='VABF'){
-            $response .= "Mumbai";
+            $response = "Mumbai";
              
         }
         elseif($fir =='VCCC'){
-            $response .= "Colombo";
+            $response = "Colombo";
              
         }
         elseif($fir =='VECF'){
-            $response .= "Kolkata";
+            $response = "Kolkata";
              
         }
         elseif($fir =='VGFR'){
-            $response .= "Dhaka";
+            $response = "Dhaka";
              
         }
         elseif($fir =='VHHK'){
-            $response .= "Hong Kong";
+            $response = "Hong Kong";
              
         }
         elseif($fir =='VIDF'){
-            $response .= "Delhi";
+            $response = "Delhi";
              
         }
         elseif($fir =='VLIV'){
-            $response .= "Vientiane";
+            $response = "Vientiane";
              
         }
         elseif($fir =='VLVT'){
-            $response .= "Vientiane";
+            $response = "Vientiane";
              
         }
         elseif($fir =='VNSM'){
-            $response .= "Kathmandu";
+            $response = "Kathmandu";
              
         }
         elseif($fir =='VOMF'){
-            $response .= "Chennai";
+            $response = "Chennai";
              
         }
         elseif($fir =='VRMF'){
-            $response .= "Male";
+            $response = "Male";
              
         }
         elseif($fir =='VTBB'){
-            $response .= "Bangkok";
+            $response = "Bangkok";
              
         }
         elseif($fir =='VVTS'){
-            $response .= "Ho-Chi-Minh";
+            $response = "Ho-Chi-Minh";
              
         }
         elseif($fir =='VVVV'){
-            $response .= "Hanoi";
+            $response = "Hanoi";
              
         }
         elseif($fir =='VYMD'){
-            $response .= "";
+            $response = "";
              
         }
         elseif($fir =='VYYF'){
-            $response .= "Yangon";
+            $response = "Yangon";
              
         }
         elseif($fir =='WAAF'){
-            $response .= "Ujung Pandang";
+            $response = "Ujung Pandang";
              
         }
         elseif($fir =='WAAZ'){
-            $response .= "Ujung Pandang ACC";
+            $response = "Ujung Pandang ACC";
              
         }
         elseif($fir =='WABZ'){
-            $response .= "Biak Sector";
+            $response = "Biak Sector";
              
         }
         elseif($fir =='WADZ'){
-            $response .= "Bali";
+            $response = "Bali";
              
         }
         elseif($fir =='WAJZ'){
-            $response .= "";
+            $response = "";
              
         }
         elseif($fir =='WAKZ'){
-            $response .= "Merauke";
+            $response = "Merauke";
              
         }
         elseif($fir =='WALZ'){
-            $response .= "Balikpapan";
+            $response = "Balikpapan";
              
         }
         elseif($fir =='WAMZ'){
-            $response .= "Manado";
+            $response = "Manado";
              
         }
         elseif($fir =='WAOZ'){
-            $response .= "Banjarmasin";
+            $response = "Banjarmasin";
              
         }
         elseif($fir =='WAPZ'){
-            $response .= "Ambon";
+            $response = "Ambon";
              
         }
         elseif($fir =='WATZ'){
-            $response .= "Kupang";
+            $response = "Kupang";
              
         }
         elseif($fir =='WBFC'){
-            $response .= "Kota Kinabalu";
+            $response = "Kota Kinabalu";
              
         }
         elseif($fir =='WIIF'){
-            $response .= "Jakarta";
+            $response = "Jakarta";
              
         }
         elseif($fir =='WIIZ'){
-            $response .= "Jakarta ACC";
+            $response = "Jakarta ACC";
              
         }
         elseif($fir =='WIMZ'){
-            $response .= "Medan";
+            $response = "Medan";
              
         }
         elseif($fir =='WIOZ'){
-            $response .= "Pontianak";
+            $response = "Pontianak";
              
         }
         elseif($fir =='WIPZ'){
-            $response .= "Palembang";
+            $response = "Palembang";
              
         }
         elseif($fir =='WMFC'){
-            $response .= "Kuala Lumpur";
+            $response = "Kuala Lumpur";
              
         }
         elseif($fir =='WSJC'){
-            $response .= "Singapore";
+            $response = "Singapore";
              
         }
         elseif($fir =='YBBB'){
-            $response .= "Brisbane";
+            $response = "Brisbane";
              
         }
         elseif($fir =='YMMM'){
-            $response .= "Melbourne";
+            $response = "Melbourne";
              
         }
         elseif($fir =='ZBPE'){
-            $response .= "Beijing";
+            $response = "Beijing";
              
         }
         elseif($fir =='ZGJD'){
-            $response .= "Zhuhai";
+            $response = "Zhuhai";
              
         }
         elseif($fir =='ZGZU'){
-            $response .= "Guangzhou";
+            $response = "Guangzhou";
              
         }
         elseif($fir =='ZHWH'){
-            $response .= "Wuhan";
+            $response = "Wuhan";
              
         }
         elseif($fir =='ZJSA'){
-            $response .= "Sanya";
+            $response = "Sanya";
              
         }
         elseif($fir =='ZKKP'){
-            $response .= "Pyongyang";
+            $response = "Pyongyang";
              
         }
         elseif($fir =='ZLHW'){
-            $response .= "Lanzhou";
+            $response = "Lanzhou";
              
         }
         elseif($fir =='ZMUB'){
-            $response .= "Ulan Bator";
+            $response = "Ulan Bator";
              
         }
         elseif($fir =='ZPKM'){
-            $response .= "Kunming";
+            $response = "Kunming";
              
         }
         elseif($fir =='ZSHA'){
-            $response .= "Shanghai";
+            $response = "Shanghai";
              
         }
         elseif($fir =='ZWUQ'){
-            $response .= "Urumqi";
+            $response = "Urumqi";
              
         }
         elseif($fir =='ZYSH'){
-            $response .= "Shenyang";
+            $response = "Shenyang";
              
         }
+        else{
+            return null;
+        }
 
-        return $response;
     }
 
     public static function OriginatingOffice($kode){
@@ -1300,6 +1308,10 @@ class ParseSigmet extends Controller
         elseif($kode == 'YMMC'){
             $response = 'Aviation Weather Centre Melbourne';
         }
+        else{
+            return null;
+        }
+
     }
 
     public static function singkatan($kode){
@@ -1437,6 +1449,9 @@ class ParseSigmet extends Controller
         }
         elseif($kode == 'Z'){
             return "Code for UTC (Universal Time Coordinated)";
+        }
+        else{
+            return null;
         }
     }
 }
