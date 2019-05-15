@@ -1300,4 +1300,142 @@ class ParseSigmet extends Controller
             $response = 'Aviation Weather Centre Melbourne';
         }
     }
+
+    public static function singkatan($kode){
+        if($kode =='BLW'){
+            return "Below";
+        }
+        elseif($kode == 'CLD'){
+            return "Cloud";
+        }
+        elseif($kode == 'CNL'){
+            return "Cancel";
+        }
+        elseif($kode == 'DS'){
+            return "Dust storm";
+        }
+        elseif($kode == 'E'){
+            return "East or eastern longitude";
+        }
+        elseif($kode == 'EMBD'){
+            return "Embedded";
+        }
+        elseif($kode == 'EXTD'){
+            return "Extends";
+        }
+        elseif($kode == 'FCST'){
+            return "Forecast";
+        }
+        elseif($kode == 'FIR'){
+            return "Flight Information Region";
+        }
+        elseif($kode == 'FL'){
+            return "Flight level";
+        }
+        elseif($kode == 'FRQ'){
+            return "Frequent";
+        }
+        elseif($kode == 'FT'){
+            return "Feet";
+        }
+        elseif($kode == 'FZRA'){
+            return "Freezing rain";
+        }
+        elseif($kode == 'GR'){
+            return "Hail";
+        }
+        elseif($kode == 'HVY'){
+            return "Heavy";
+        }
+        elseif($kode == 'ICE'){
+            return "Icing";
+        }
+        elseif($kode == 'INTSF'){
+            return "Intensifying";
+        }
+        elseif($kode == 'KT'){
+            return "Knots";
+        }
+        elseif($kode == 'LOC'){
+            return "Location";
+        }
+        elseif($kode == 'MOV'){
+            return "Moving";
+        }
+        elseif($kode == 'MT'){
+            return "Mount";
+        }
+        elseif($kode == 'MTW'){
+            return "Mountain Wave";
+        }
+        elseif($kode == 'N'){
+            return "North or northern latitude";
+        }
+        elseif($kode == 'NC'){
+            return "No Change (in intensity)";
+        }
+        elseif($kode == 'NM'){
+            return "Nautical Miles";
+        }
+        elseif($kode == 'OBS'){
+            return "Observed";
+        }
+        elseif($kode == 'OBSC'){
+            return "Obscured";
+        }
+        elseif($kode == 'PSN'){
+            return "Position";
+        }
+        elseif($kode == 'RDOACT CLD'){
+            return "Radioactive cloud";
+        }
+        elseif($kode == 'S'){
+            return "South or southern latitude";
+        }
+        elseif($kode == 'SEV'){
+            return "Severe";
+        }
+        elseif($kode == 'SFC'){
+            return "Surface";
+        }
+        elseif($kode == 'SQL'){
+            return "Squall line";
+        }
+        elseif($kode == 'SS'){
+            return "Sand storm";
+        }
+        elseif($kode == 'STNR'){
+            return "Stationary";
+        }
+        elseif($kode == 'STS'){
+            return "Status";
+        }
+        elseif($kode == 'TC'){
+            return "Tropical cyclone";
+        }
+        elseif($kode == 'TOP'){
+            return "Top (of cloud)";
+        }
+        elseif($kode == 'TS'){
+            return "Thunderstorm";
+        }
+        elseif($kode == 'TURB'){
+            return "Turbulence";
+        }
+        elseif($kode == 'VA'){
+            return "Volcanic ash";
+        }
+        elseif($kode == 'W'){
+            return "West or western longitude";
+        }
+        elseif($kode == 'WI'){
+            return "Within (area)";
+        }
+        elseif($kode == 'WKN'){
+            return "Weakening (intensity)";
+        }
+        elseif($kode == 'Z'){
+            return "Code for UTC (Universal Time Coordinated)";
+        }
+    }
 }
