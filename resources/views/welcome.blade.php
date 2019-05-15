@@ -56,7 +56,7 @@
 
     </td>
     <td>
-    ini
+    {{ $getdata[$index][4] }}
 
     </td>
 
