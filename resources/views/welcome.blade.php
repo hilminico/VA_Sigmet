@@ -22,11 +22,47 @@
         </style>
     </head>
     <body>
-    @foreach($getdata as $data)
-        {{ $data->dataraw }}
-        </br>
-        </br>
+    <table>
+    <tr>
+    <td>
+    index
+    </td>
+    <td style="width:600px;">
+    data mentah
+    </td>
+    <td style="width:600px;">
+    data parsing
+    </td>
+    <td style="width:600px;">
+    translite kasar
+    </td>
+    </tr>
 
-    @endforeach
+    <?php $index=0;
+        while($index < count($getdata)){
+    ?>
+    <tr>
+    <td>
+    <?php print $index;?>
+    </td>
+    
+    <td>
+    {{ $getdata[$index][1] }}
+            
+    </td>
+
+    <td>
+    {{ $getdata[$index][0] }}
+
+    </td>
+    <td>
+    ini
+
+    </td>
+
+    </tr>
+    <?php $index++; }?>
+
+    </table>
     </body>
 </html>

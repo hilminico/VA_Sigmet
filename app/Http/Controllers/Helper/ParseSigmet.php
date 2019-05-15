@@ -23,8 +23,9 @@ class ParseSigmet extends Controller
         $rawstring = str_replace(',','',$rawstring);
         
         //tokenizing 
-        $piece[] = explode(" ", $rawstring);
-
+        // $piece[] = explode(" ", $rawstring);
+        $piece[] = $rawstring;
+        
         return $piece;
     }
 

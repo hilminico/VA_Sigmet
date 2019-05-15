@@ -25,17 +25,16 @@ class VAController extends Controller
             }
         });
         $getdata = Va::get();
+        $index = 0 ;
         foreach($getdata as $data){
 
             $parsedata[] = ParseSigmet::parsedata($data->dataraw); //preprosessing 
-
-            $array1 = $parsedata[0];
-            $hasil[] = ParseSigmet::fir($array1);
+            $parsedata[$index]['1'] = $data->dataraw;            
 
             $orginating[] =ParseSigmet::OriginatingOffice($data->dataraw);
 
+            $index = $index + 1 ;
         }
-        dd($parsedata);
-        return view('welcome')->with('getdata',$getdata);    
+        return view('welcome')->with('getdata',$parsedata);    
     }
 }
