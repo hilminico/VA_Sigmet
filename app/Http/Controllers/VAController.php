@@ -36,14 +36,22 @@ class VAController extends Controller
 
             for ($i=0 ; $i < count($parsedata[$index]['2']);$i++){
 
-                $fir = ParseSigmet::FIR($parsedata[$index]['2'][$i]);
-
-
-                if(!(is_null($fir))){
-                    $parsedata[$index]['3'][$i] = $fir;
+                $jam = ParseSigmet::ReceivedAt($parsedata[$index]['2'][$i]);
+                if(!(is_null($jam))){
+                    $parsedata[$index]['3'][$i] = $jam;
                 }
                 else{
                     $parsedata[$index]['3'][$i] = null;
+                }
+
+                $date = ParseSigmet::date($parsedata[$index]['2'][$i]);
+                if(!(is_null($date))){
+                    $parsedata[$index]['3'][$i] = $date;
+                }
+
+                $fir = ParseSigmet::FIR($parsedata[$index]['2'][$i]);
+                if(!(is_null($fir))){
+                    $parsedata[$index]['3'][$i] = $fir;
                 }
 
                 $org = ParseSigmet::OriginatingOffice($parsedata[$index]['2'][$i]);
@@ -62,6 +70,7 @@ class VAController extends Controller
              
             $index = $index + 1 ;
         }
+        dd($parsedata);
         return view('welcome')->with('getdata',$parsedata);    
     }
 }

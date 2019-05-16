@@ -31,8 +31,27 @@ class ParseSigmet extends Controller
         return $piece;
     }
 
-    public function ReceivedAt(){
-        
+    public static function ReceivedAt($string){
+        if($string == "Received"){
+            return "Pada";
+        }
+        elseif($string == "at"){
+            return "pukul";
+        }else{
+            return null;
+        }
+    }
+
+    public static function date($string){
+        $time = preg_match("/^(?:2[0-3]|[01][0-9]):[0-5][0-9]$/", $string);
+        $date = preg_match("/^([0-9]{1,2})\\/([0-9]{1,2})\\/([0-9]{2})$/", $string);
+        if($time == true){
+            return $string;
+        }elseif($date == true){
+            return $string;
+        }else{
+            return null;
+        }
     }
 
     public static function FIR($kode){
