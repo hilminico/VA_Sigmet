@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Va;
 use App\Http\Controllers\Helper\ParseSigmet;
-
+use App\Http\Controllers\Helper\IataCodes;
 use Goutte;
 
 class VAController extends Controller
@@ -51,7 +51,7 @@ class VAController extends Controller
 
                 $fir = ParseSigmet::FIR($parsedata[$index]['2'][$i]);
                 if(!(is_null($fir))){
-                    $parsedata[$index]['3'][$i] = $fir;
+                    $parsedata[$index]['3'][$i] = 'di '.$fir;
                 }
 
                 $org = ParseSigmet::OriginatingOffice($parsedata[$index]['2'][$i]);

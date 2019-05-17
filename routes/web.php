@@ -15,3 +15,4 @@ Route::get('/', 'VAController@index')->name('index');
 
 Route::get('/form', 'InputController@index');
 Route::get('/actioninput', 'InputController@inputhandling');
+Route::get('/code', 'VAController@iatacode');

@@ -167,6 +167,7 @@ return [
          */
 
         Weidner\Goutte\GoutteServiceProvider::class, // [1]
+        ijeffro\Airports\AirportsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -228,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Goutte' => Weidner\Goutte\GoutteFacade::class, // [2]
+        'Airports' => ijeffro\Airports\AirportsFacade::class,
 
     ],
 
