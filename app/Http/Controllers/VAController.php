@@ -56,7 +56,12 @@ class VAController extends Controller
 
                 $sequence = ParseSigmet::sequence_number($parsedata[$index]['2'][$i]);
                 if(!(is_null($sequence))){
-                    $parsedata[$index]['3'][$i] = $sequence;
+                    if($sequence == "SIGMET"){
+                        $parsedata[$index]['3'][$i] = $sequence;
+                    }
+                    else{
+                        $parsedata[$index]['3'][$i] = 'ke-'.$sequence;
+                    }
                 }
 
                 $no_valid = ParseSigmet::validitas($parsedata[$index]['2'][$i]);
@@ -67,6 +72,18 @@ class VAController extends Controller
                     else{
                         $parsedata[$index]['3'][$i] = $no_valid;
                     }
+                }
+
+                $area = $parsedata[$index]['2'][$i];
+                $pattern_area = preg_match("/^[A-Z]{4}-[A-Z]{4}$/", $area);
+                if($pattern_area == true){
+                    $ex_area = explode("-",$area);
+                    for( $i_area =1 ; $i_area <= sizeof($ex_area) ; $i_area++ ){
+
+                        $ex_area[$i_area-1] = ParseSigmet::FIR($ex_area[$i_area-1]);
+
+                    }
+                    $parsedata[$index]['3'][$i] = "mencakup wilayah ".implode("-",$ex_area);
                 }
 
                 $org = ParseSigmet::OriginatingOffice($parsedata[$index]['2'][$i]);
