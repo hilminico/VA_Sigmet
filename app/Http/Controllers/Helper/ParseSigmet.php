@@ -43,13 +43,41 @@ class ParseSigmet extends Controller
     }
 
     public static function date($string){
-        $time = preg_match("/^(?:2[0-3]|[01][0-9]):[0-5][0-9]$/", $string);
-        $date = preg_match("/^([0-9]{1,2})\\/([0-9]{1,2})\\/([0-9]{2})$/", $string);
-        if($time == true){
+        $pattern_time = preg_match("/^(?:2[0-3]|[01][0-9]):[0-5][0-9]$/", $string);
+        $pattern_date = preg_match("/^([0-9]{1,2})\\/([0-9]{1,2})\\/([0-9]{2})$/", $string);
+        if($pattern_time == true){
             return $string;
-        }elseif($date == true){
+        }elseif($pattern_date == true){
             return $string;
         }else{
+            return null;
+        }
+    }
+
+    public static function sequence_number($string){
+        $pattern_sequence_1 = preg_match("/^[A-Z]$/", $string);
+        $pattern_sequence_2 = preg_match("/^[A-Z][0-9]$/", $string);
+        $pattern_sequence_3 = preg_match("/^[A-Z][0-9][0-9]$/", $string);
+        $pattern_sequence_4 = preg_match("/^[0-9][0-9]$/", $string);
+        $pattern_sequence_5 = preg_match("/^[0-9]$/", $string);
+
+        if($string == "SIGMET"){
+            return $string;
+        }
+        elseif( $pattern_sequence_1 || $pattern_sequence_2 || $pattern_sequence_3 || $pattern_sequence_4 || $pattern_sequence_5 ){
+            return $string;
+        }
+    }
+
+    public static function validitas($string){
+        $pattern_valid = preg_match("/^[0-9]{6}\\/([0-9]{6})$/", $string);
+        if($string == "VALID"){
+            return $string;
+        }
+        elseif($pattern_valid == true){
+            return $string;
+        }
+        else{
             return null;
         }
     }

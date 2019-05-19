@@ -54,6 +54,21 @@ class VAController extends Controller
                     $parsedata[$index]['3'][$i] = 'di '.$fir;
                 }
 
+                $sequence = ParseSigmet::sequence_number($parsedata[$index]['2'][$i]);
+                if(!(is_null($sequence))){
+                    $parsedata[$index]['3'][$i] = $sequence;
+                }
+
+                $no_valid = ParseSigmet::validitas($parsedata[$index]['2'][$i]);
+                if(!(is_null($no_valid))){
+                    if($no_valid == "VALID"){
+                        $parsedata[$index]['3'][$i] = 'no '.$no_valid;
+                    }
+                    else{
+                        $parsedata[$index]['3'][$i] = $no_valid;
+                    }
+                }
+
                 $org = ParseSigmet::OriginatingOffice($parsedata[$index]['2'][$i]);
                 if(!(is_null($org))){
                     $parsedata[$index]['3'][$i] = $org;
