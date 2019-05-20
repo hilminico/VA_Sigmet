@@ -82,6 +82,23 @@ class ParseSigmet extends Controller
         }
     }
 
+    public static function koordinat($string){
+        $pattern_valid_1 = preg_match("/^[A-Z]([0-9]{5})-[A-Z]([0-9]{5})$/", $string);
+        $pattern_valid_2 = preg_match("/^[A-Z]([0-9]{4})-[A-Z]([0-9]{5})$/", $string);
+        $pattern_valid_3 = preg_match("/^[A-Z]([0-9]{5})-[A-Z]([0-9]{4})$/", $string);
+        $pattern_valid_4 = preg_match("/^[A-Z]([0-9]{4})-[A-Z]([0-9]{4})$/", $string);
+        $pattern_valid_5 = preg_match("/^[A-Z]([0-9]{5})$/", $string);
+        $pattern_valid_6 = preg_match("/^[A-Z]([0-9]{4})$/", $string);
+
+        if($pattern_valid_1 == true || $pattern_valid_2 == true || $pattern_valid_3 == true || $pattern_valid_4 == true ){
+            return $string;
+        }elseif($pattern_valid_5 == true || $pattern_valid_6 == true ){
+            return $string;
+        }else{
+            return null;
+        }
+    }
+
     public static function FIR($fir){
         if($fir == 'AGGG'){
             return "Honiara";
@@ -1011,6 +1028,10 @@ class ParseSigmet extends Controller
             return "Tilichiki";
              
         }
+        elseif($fir =='UHPP'){
+            return "Petropavlovsk-Kamchatsky";
+             
+        }
         elseif($fir =='UHPU'){
             return "Ust-Khairyozovo";
              
@@ -1243,6 +1264,10 @@ class ParseSigmet extends Controller
             return "Jakarta";
              
         }
+        elseif($fir =='WIII'){
+            return "Soekarno–Hatta";
+             
+        }
         elseif($fir =='WIIZ'){
             return "Jakarta ACC";
              
@@ -1378,6 +1403,9 @@ class ParseSigmet extends Controller
         elseif($kode == 'EMBD'){
             return "Embedded";
         }
+        elseif($kode == 'ERUPTION'){
+            return "ERUPTION";
+        }
         elseif($kode == 'EXTD'){
             return "Extends";
         }
@@ -1386,6 +1414,9 @@ class ParseSigmet extends Controller
         }
         elseif($kode == 'FIR'){
             return "Flight Information Region";
+        }
+        elseif($kode == 'FIR/UIR'){
+            return "Flight Information Region/Upper Information Region";
         }
         elseif($kode == 'FL'){
             return "Flight level";
@@ -1479,6 +1510,9 @@ class ParseSigmet extends Controller
         }
         elseif($kode == 'TURB'){
             return "Turbulence";
+        }
+        elseif($kode == 'UIR'){
+            return "Upper Information Region";
         }
         elseif($kode == 'VA'){
             return "Volcanic ash";

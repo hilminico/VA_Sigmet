@@ -91,10 +91,17 @@ class VAController extends Controller
                     $parsedata[$index]['3'][$i] = $org;
                 }
 
-                $singkatan = ParseSigmet::singkatan($parsedata[$index]['2'][$i]);
+                $koordinat = ParseSigmet::koordinat($parsedata[$index]['2'][$i]);
+                if(!(is_null($koordinat))){
+                    $parsedata[$index]['3'][$i] = $koordinat;
+                }
 
+                $singkatan = ParseSigmet::singkatan($parsedata[$index]['2'][$i]);
+                $pattern_psn = preg_match('/PSN/',$parsedata[$index]['2'][$i]);                
                 if(!(is_null($singkatan))){
                     $parsedata[$index]['3'][$i] = $singkatan;
+                }elseif($pattern_psn == true){
+                    $parsedata[$index]['3'][$i] = str_replace("PSN","Position ",$parsedata[$index]['2'][$i]);
                 }
 
             }
