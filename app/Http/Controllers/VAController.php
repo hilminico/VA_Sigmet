@@ -95,6 +95,11 @@ class VAController extends Controller
                 if(!(is_null($koordinat))){
                     $parsedata[$index]['3'][$i] = $koordinat;
                 }
+                $fl = ParseSigmet::fl($parsedata[$index]['2'][$i]);
+                if($fl == true){
+                    $parsedata[$index]['2'][$i] = str_replace("FL","flight level: ",$parsedata[$index]['2'][$i]);
+                    $parsedata[$index]['3'][$i] = str_replace("SFC","surface",$parsedata[$index]['2'][$i]);
+                }
 
                 $singkatan = ParseSigmet::singkatan($parsedata[$index]['2'][$i]);
                 $pattern_psn = preg_match('/PSN/',$parsedata[$index]['2'][$i]);                

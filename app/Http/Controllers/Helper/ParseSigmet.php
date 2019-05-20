@@ -89,10 +89,22 @@ class ParseSigmet extends Controller
         $pattern_valid_4 = preg_match("/^[A-Z]([0-9]{4})-[A-Z]([0-9]{4})$/", $string);
         $pattern_valid_5 = preg_match("/^[A-Z]([0-9]{5})$/", $string);
         $pattern_valid_6 = preg_match("/^[A-Z]([0-9]{4})$/", $string);
+        $pattern_valid_7 = preg_match("/^[0-9]{4}([A-Z])$/", $string);
+        $pattern_valid_8 = preg_match("/^[0-9]{5}([A-Z])$/", $string);
 
-        if($pattern_valid_1 == true || $pattern_valid_2 == true || $pattern_valid_3 == true || $pattern_valid_4 == true ){
+        if($pattern_valid_1 == true || $pattern_valid_2 == true || $pattern_valid_3 == true || $pattern_valid_4 == true || $pattern_valid_7 == true || $pattern_valid_8 == true ){
             return $string;
         }elseif($pattern_valid_5 == true || $pattern_valid_6 == true ){
+            return $string;
+        }else{
+            return null;
+        }
+    }
+
+    public static function fl($string){
+        $pattern_valid_1 = preg_match("/FL([0-9]{3})/", $string);
+        $pattern_valid_2 = preg_match("/FL([0-9]{4})/", $string);
+        if($pattern_valid_1 == true || $pattern_valid_2 == true){
             return $string;
         }else{
             return null;
@@ -1385,11 +1397,17 @@ class ParseSigmet extends Controller
     }
 
     public static function singkatan($kode){
-        if($kode =='BLW'){
+        if($kode =='AT'){
+            return "di";
+        }
+        elseif($kode =='BLW'){
             return "Below";
         }
         elseif($kode == 'CLD'){
             return "Cloud";
+        }
+        elseif($kode == 'CLD:'){
+            return "Cloud:";
         }
         elseif($kode == 'CNL'){
             return "Cancel";
