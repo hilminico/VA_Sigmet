@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Helper\KataController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Helper\RuleController;
 
 class InputController extends Controller
 {
@@ -20,12 +21,19 @@ class InputController extends Controller
         $string = str_replace(' ', '-', $command); // Replaces all spaces with hyphens.
         $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars
         $string = str_replace('-', ' ', $command); // Replaces all spaces with hyphens.
-
+        $data[0] = $string;
         if(str_word_count($string) <= 5){
             return "Error";
         }
 
-        $katatanya = KataController::katatanya($command);
+        $explode_str = explode(' ',$string);
+        $kata_pertama = KataController::katatanya($explode_str[0]);
+
+        if( $kata_pertama == false ){
+            return ('wrong rule');
+        }
+
+        return view("resultinput")->with('data',$data);
 
     }
 }
