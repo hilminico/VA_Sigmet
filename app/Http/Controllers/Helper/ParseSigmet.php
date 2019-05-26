@@ -1484,6 +1484,10 @@ class ParseSigmet extends Controller
         elseif($kode == 'NM'){
             return "Nautical Miles";
         }
+        elseif($kode == 'NW'){
+            return "North West";
+        }
+        
         elseif($kode == 'OBS'){
             return "Observed";
         }
