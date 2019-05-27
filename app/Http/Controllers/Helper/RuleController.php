@@ -17,7 +17,15 @@ class RuleController extends Controller
     }
 
     public static function parser($string){
-        $check_attribut = $this->attribut($string);
+        for($i=0;$i < sizeof($string); $i++){
+            $check_attribut = KataController::attribut($string[$i]);
+            if($check_attribut == true){
+                $parser[$i] = true;
+            }else{
+                $parser[$i] = false;
+            }
+        }
+        dd($parser);
     }
 
     public static function checkrule($string){
@@ -70,10 +78,5 @@ class RuleController extends Controller
 
     }
 
-    public function attribut($att){
-        // fir , sequence_id , validity , info
-
-
-    }
 
 }

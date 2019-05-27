@@ -23,6 +23,12 @@ class KataController extends Controller
         return false;
     }
 
+    public static function attribut($att){
+        $dict_att = array( 'fir' , 'sequence_id' , 'validity' , 'info');
+        $check = in_array($att,$dict_att) ;
+        return $check;
+    }
+
     public static function kata($kata){
         if($kata == "info"){
             return true;
@@ -61,36 +67,5 @@ class KataController extends Controller
             return true;
         }
         return false;
-    }
-
-    public static function attribut($att){
-        if($kata == "field"){
-            return true;
-        }
-        elseif($kata == "tanggal"){
-            return true;
-        }
-        elseif($kata == "jam"){
-            return true;
-        }
-        elseif($kata == "koordinat"){
-            return true;
-        }
-        elseif($kata == "lintang"){
-            return true;
-        }
-        elseif($kata == "bujur"){
-            return true;
-        }
-        elseif($kata == "wilayah"){
-            return true;
-        }
-        elseif($kata == "terkini"){
-            return true;
-        }
-        elseif($kata == "lokasi"){
-            return true;
-        }
-        return false;
-    }
+    }    
 }
