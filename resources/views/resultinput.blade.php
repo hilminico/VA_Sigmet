@@ -72,7 +72,7 @@
     }
   </style>
     <body>
-    <div class="input"> input:{{ $data[0]}} </div>
+    <div class="input"> inputan:{{ $data[0]}} </div>
     </br>
     <table class="flat-table flat-table-1">
 	<thead>
