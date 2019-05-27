@@ -7,11 +7,27 @@ use App\Http\Controllers\Controller;
 
 class RuleController extends Controller
 {
+    public static function scanner($string){
+        $string = str_replace(' ', '-', $string);
+        $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); 
+        $string = str_replace('-', ' ', $string); 
+
+        $string_explode = explode(' ',$string);
+        return $string_explode;
+    }
+
+    public static function parser($string){
+        $check_attribut = $this->attribut($string);
+    }
+
     public static function checkrule($string){
         $explode_string = explode(' ',$string);
 
         $length = sizeof($explode_string);
+
         if($length == 4){
+
+            $pattern = preg_replace('/[a-z]/', '', $string);
 
         }
         elseif($length == 5){
@@ -51,6 +67,12 @@ class RuleController extends Controller
                 return false;
             }
         }
+
+    }
+
+    public function attribut($att){
+        // fir , sequence_id , validity , info
+
 
     }
 

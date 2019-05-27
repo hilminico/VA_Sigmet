@@ -18,10 +18,10 @@ class InputController extends Controller
 
         $command = strtolower($request->command);
 
-        $string = str_replace(' ', '-', $command); // Replaces all spaces with hyphens.
-        $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars
-        $string = str_replace('-', ' ', $command); // Replaces all spaces with hyphens.
-        $data[0] = $string;
+        $scanner = RuleController::scanner($command);
+
+        $parser = RuleController::parser($scanner);
+
         if(str_word_count($string) < 4){
             return "Error";
         }
