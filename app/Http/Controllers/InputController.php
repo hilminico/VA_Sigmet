@@ -22,7 +22,7 @@ class InputController extends Controller
 
         $parser = RuleController::parser($scanner);
 
-        if(str_word_count($string) < 4){
+        if(str_word_count($string) < 3){
             return "Error";
         }
 
