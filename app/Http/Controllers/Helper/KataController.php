@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class KataController extends Controller
 {
     public static function katatanya_dapatdiabaikan($katatanya){
-        $dict_kata_tanya = array('siapa','dimana','apa','apa saja');
+        $dict_kata_tanya = array('dimana','apa','apa saja');
         $check = in_array($katatanya,$dict_kata_tanya) ;
         return $check;
     }
@@ -20,7 +20,7 @@ class KataController extends Controller
     }
 
     public static function katapelengkap_dapatdiabaikan($katapelengkap){
-        $dict_kata_pelengkap = array('saja','daftar','ditawarkan','pengajar','mengandung','mahasiswa');
+        $dict_kata_pelengkap = array('saja','daftar','ditawarkan','gunung');
         $check = in_array($katapelengkap,$dict_kata_pelengkap) ;
         return $check;
     }

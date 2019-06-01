@@ -48,15 +48,35 @@ class RuleController extends Controller
                 $parser[$i] = "<katatoken_operatornegasi>";
             }
             else{
-                dd('error');
-            }
+                $parser[$i] = "<data>";
+            }            
         }
-        dd($parser);
-
-
+        
+        return implode(' ',$parser);
     }
 
-    public static function parser($string){
+    public static function parser($scanner,$command){
+        $arr[0] = explode(' ',$scanner);
+        $arr[1] = explode(' ',$command);
+        for($i=0 ; $i < sizeof($arr[0]) ; $i++){
+            if( $arr[0][$i] == "<katatoken_attribut>"){
+                $token[] = $arr[1][$i];
+            }
+            if( $arr[0][$i] == "<katatoken_operator>"){
+                $token[] = $arr[1][$i];
+            }
+            if( $arr[0][$i] == "<katatoken_katasambung>"){
+                $token[] = $arr[1][$i];
+            }
+            if( $arr[0][$i] == "<katatoken_operatornegasi>"){
+                $token[] = $arr[1][$i];
+            }
+            if( $arr[0][$i] == "<data>"){
+                $token[] = $arr[1][$i];
+            }
+        }
+        $arr[2]= $token;
+        dd($arr);
     }
 
     public static function checkrule($string){
