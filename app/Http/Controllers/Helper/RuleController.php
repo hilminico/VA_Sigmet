@@ -60,23 +60,41 @@ class RuleController extends Controller
         $arr[1] = explode(' ',$command);
         for($i=0 ; $i < sizeof($arr[0]) ; $i++){
             if( $arr[0][$i] == "<katatoken_attribut>"){
+                $tipe[] = $arr[0][$i];
                 $token[] = $arr[1][$i];
             }
             if( $arr[0][$i] == "<katatoken_operator>"){
+                $tipe[] = $arr[0][$i];
                 $token[] = $arr[1][$i];
             }
             if( $arr[0][$i] == "<katatoken_katasambung>"){
+                $tipe[] = $arr[0][$i];
                 $token[] = $arr[1][$i];
             }
             if( $arr[0][$i] == "<katatoken_operatornegasi>"){
+                $tipe[] = $arr[0][$i];
                 $token[] = $arr[1][$i];
             }
             if( $arr[0][$i] == "<data>"){
+                $tipe[] = $arr[0][$i];
                 $token[] = $arr[1][$i];
             }
         }
-        $arr[2]= $token;
+        $arr[2]= $tipe;
+        $arr[3]= $token;
+
         dd($arr);
+    }
+
+    public function dict_rule(){
+        // S = <atribut>A 
+        // A = <kata_sambung>B | ε | <atribut_kondisi>C
+        // B = <atribut>A
+        // C = <operator_bukan>D | <data>E | <operator>F
+        // D = <data>E
+        // E = <kata_sambung>G | ε
+        // F = <data>E 
+        // G = <atribut_kondisi>C
     }
 
     public static function checkrule($string){
