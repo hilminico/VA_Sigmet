@@ -32,7 +32,7 @@ class KataController extends Controller
     }
 
     public static function katatoken_attribut($att){
-        $dict_att = array( 'fir' , 'sequence_id' , 'validity' , 'info');
+        $dict_att = array( 'fir' , 'sequence_id' , 'validity' , 'info','va');
         $check = in_array($att,$dict_att) ;
         return $check;
     }

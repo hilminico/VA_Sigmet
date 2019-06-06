@@ -22,6 +22,8 @@ class InputController extends Controller
 
         $parser = RuleController::parser($scanner,$command);
 
+        $check_tail = RuleController::check_tail_att($parser);
+
         if(str_word_count($string) < 3){
             return "Error";
         }

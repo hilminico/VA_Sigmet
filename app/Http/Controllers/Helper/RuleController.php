@@ -83,7 +83,8 @@ class RuleController extends Controller
         $arr[2]= $tipe;
         $arr[3]= $token;
 
-        dd($arr);
+        return $arr;
+
     }
 
     public function dict_rule(){
@@ -95,6 +96,8 @@ class RuleController extends Controller
         // E = <kata_sambung>G | ε
         // F = <data>E 
         // G = <atribut_kondisi>C
+
+
     }
 
     public static function checkrule($string){
@@ -145,6 +148,13 @@ class RuleController extends Controller
             }
         }
 
+    }
+
+    public static function check_tail_att($arr){
+        $merge_string = implode(' ',$arr[0]);
+        $arr[4] = str_replace("<katatoken_attribut> <data>","<fkondisi>",$merge_string);
+        $arr[4] = explode(' ',$arr[4]);
+        dd($arr);
     }
 
 
