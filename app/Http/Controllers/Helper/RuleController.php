@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Helper;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Finite\StateMachine\StateMachine;
+use Finite\State\State;
+use Finite\State\StateInterface;
+use Finite\Loader\ArrayLoader;
+use App\RuleTree;
 
 class RuleController extends Controller
 {
@@ -158,4 +163,41 @@ class RuleController extends Controller
     }
 
 
+    public function check_rule_tree(){
+
+    $document     = new RuleTree;
+    $stateMachine = new StateMachine;
+    $loader       = new ArrayLoader([
+        'class'  => 'RuleTree',
+        'states' => [
+            'draft'    => ['type' => 'initial', 'properties' => []],
+            'proposed' => ['type' => 'normal',  'properties' => []],
+            'accepted' => ['type' => 'final',   'properties' => []],
+            'refused'  => ['type' => 'final',   'properties' => []],
+        ],
+        'transitions' => [
+            'propose' => ['from' => ['draft'],    'to' => 'proposed'],
+            'accept'  => ['from' => ['proposed'], 'to' => 'accepted'],
+            'refuse'  => ['from' => ['proposed'], 'to' => 'refused'],
+        ]
+    ]);
+    
+    $loader->load($stateMachine);
+    $stateMachine->setObject($document);
+    $stateMachine->initialize();
+
+    echo $stateMachine->getCurrentState();
+    // => "draft"
+
+    var_dump($stateMachine->can('accept'));
+    // => bool(false)
+
+    var_dump($stateMachine->can('propose'));
+    // => bool(true)
+
+    $stateMachine->apply('propose');
+    echo $stateMachine->getCurrentState();
+    // => "proposed"
+
+    }
 }

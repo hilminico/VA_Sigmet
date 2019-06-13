@@ -17,3 +17,4 @@ Route::get('/form', 'InputController@index');
 Route::get('/actioninput', 'InputController@inputhandling');
 Route::get('/code', 'VAController@iatacode');
 Route::get('/rule', 'Helper\RuleController@dict_rule');
+Route::get('/rule_tree', 'Helper\RuleController@check_rule_tree');
