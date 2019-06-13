@@ -170,15 +170,27 @@ class RuleController extends Controller
     $loader       = new ArrayLoader([
         'class'  => 'RuleTree',
         'states' => [
-            'draft'    => ['type' => 'initial', 'properties' => []],
-            'proposed' => ['type' => 'normal',  'properties' => []],
-            'accepted' => ['type' => 'final',   'properties' => []],
-            'refused'  => ['type' => 'final',   'properties' => []],
+            'S'    => ['type' => 'initial', 'properties' => []],
+            'A' => ['type' => 'final',  'properties' => []],
+            'B' => ['type' => 'normal',   'properties' => []],
+            'C'  => ['type' => 'normal',   'properties' => []],
+            'D'  => ['type' => 'normal',   'properties' => []],
+            'E'  => ['type' => 'final',   'properties' => []],
+            'F'  => ['type' => 'normal',   'properties' => []],
+            'G'  => ['type' => 'normal',   'properties' => []],
         ],
         'transitions' => [
-            'propose' => ['from' => ['draft'],    'to' => 'proposed'],
-            'accept'  => ['from' => ['proposed'], 'to' => 'accepted'],
-            'refuse'  => ['from' => ['proposed'], 'to' => 'refused'],
+            'atribut1' => ['from' => 'S',    'to' => 'A'],
+            'atribut2' => ['from' => 'B',    'to' => 'A'],
+            'Kata_sambung1'  => ['from' => 'A', 'to' => 'B'],
+            'Kata_sambung2'  => ['from' => 'E', 'to' => 'G'],
+            'Atribut_kondisi' => ['from' => ['A'],    'to' => 'C'],
+            'Operator_bukan'  => ['from' => ['C'], 'to' => 'D'],
+            'data'  => ['from' => ['D'], 'to' => 'E'],
+            'operator' => ['from' => ['C'],    'to' => 'F'],
+            'data'  => ['from' => ['F'], 'to' => 'E'],
+            'data'  => ['from' => ['C'], 'to' => 'E'],
+            'Atribut_kondisi'  => ['from' => ['G'], 'to' => 'C'],
         ]
     ]);
     
@@ -189,13 +201,14 @@ class RuleController extends Controller
     echo $stateMachine->getCurrentState();
     // => "draft"
 
-    var_dump($stateMachine->can('accept'));
+    // var_dump($stateMachine->can('data'));
     // => bool(false)
 
-    var_dump($stateMachine->can('propose'));
+    var_dump($stateMachine->can('atribut1'));
     // => bool(true)
 
-    $stateMachine->apply('propose');
+    $stateMachine->apply('atribut1');
+    $stateMachine->apply('Kata_sambung1');
     echo $stateMachine->getCurrentState();
     // => "proposed"
 
