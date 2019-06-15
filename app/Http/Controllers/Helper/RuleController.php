@@ -164,7 +164,6 @@ class RuleController extends Controller
 
 
     public static function check_rule_tree($param){
-        dd($param);
     $document     = new RuleTree;
     $stateMachine = new StateMachine;
     $loader       = new ArrayLoader([
@@ -180,16 +179,16 @@ class RuleController extends Controller
             'G'  => ['type' => 'normal',   'properties' => []],
         ],
         'transitions' => [
-            'atribut' => ['from' => ['S','B'],    'to' => 'A'],
-            'Kata_sambung'  => ['from' => 'A', 'to' => 'B'],
-            'Kata_sambung1'  => ['from' => 'E', 'to' => 'G'],
-            'Atribut_kondisi' => ['from' => ['A'],    'to' => 'C'],
-            'Operator_bukan'  => ['from' => ['C'], 'to' => 'D'],
-            'data'  => ['from' => ['D'], 'to' => 'E'],
-            'operator' => ['from' => ['C'],    'to' => 'F'],
-            'data1'  => ['from' => ['F'], 'to' => 'E'],
-            'data2'  => ['from' => ['C'], 'to' => 'E'],
-            'Atribut_kondisi1'  => ['from' => ['G'], 'to' => 'C'],
+            '<katatoken_attribut>' => ['from' => ['S','B'],    'to' => 'A'],
+            '<katatoken_katasambung>'  => ['from' => 'A', 'to' => 'B'],
+            '<katatoken_katasambung1>'  => ['from' => 'E', 'to' => 'G'],
+            '<fkondisi>' => ['from' => ['A'],    'to' => 'C'],
+            'katatoken_operatornegasi'  => ['from' => ['C'], 'to' => 'D'],
+            '<data>'  => ['from' => ['D'], 'to' => 'E'],
+            '<katatoken_operator>' => ['from' => ['C'],    'to' => 'F'],
+            '<data1>'  => ['from' => ['F'], 'to' => 'E'],
+            '<data2>'  => ['from' => ['C'], 'to' => 'E'],
+            '<fkondisi>'  => ['from' => ['G'], 'to' => 'C'],
         ]
     ]);
 
@@ -197,17 +196,19 @@ class RuleController extends Controller
     $loader->load($stateMachine);
     $stateMachine->setObject($document);
     $stateMachine->initialize();
-
+        
     $current_state = $stateMachine->getCurrentState();
-    if($current_state == 'S'){
-
+    foreach($param[4] as $par){
+        $check = $stateMachine->can($par);
+        if($check == true){
+            $current_state = $stateMachine->apply($par);
+        }
+        else{
+            return "Rule Salah";
+        }
     }
-
-    // var_dump($stateMachine->can('atribut'));
-
-    $stateMachine->apply('atribut');
-
-    // echo $stateMachine->getCurrentState();
+    $param[5] = $stateMachine->getCurrentState();
+    return $param;
 
     }
 }

@@ -25,6 +25,9 @@ class InputController extends Controller
         $check_tail = RuleController::check_tail_att($parser);
 
         $check_rule = RuleController::check_rule_tree($check_tail);
+
+        dd($check_rule);
+
         // $check_rule = RuleController::checkrule($data[0]);
 
         // if( $kata_pertama == false ){
