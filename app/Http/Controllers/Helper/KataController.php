@@ -44,7 +44,7 @@ class KataController extends Controller
     }
 
     public static function katatoken_katasambung($katasambung){
-        $dict_katasambung = array( 'dan');
+        $dict_katasambung = array( 'dan',',');
         $check = in_array($katasambung,$dict_katasambung) ;
         return $check;
     }

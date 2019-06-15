@@ -156,15 +156,15 @@ class RuleController extends Controller
     }
 
     public static function check_tail_att($arr){
-        $merge_string = implode(' ',$arr[0]);
+        $merge_string = implode(' ',$arr[2]);
         $arr[4] = str_replace("<katatoken_attribut> <data>","<fkondisi>",$merge_string);
         $arr[4] = explode(' ',$arr[4]);
-        dd($arr);
+        return $arr;
     }
 
 
-    public function check_rule_tree(){
-
+    public static function check_rule_tree($param){
+        dd($param);
     $document     = new RuleTree;
     $stateMachine = new StateMachine;
     $loader       = new ArrayLoader([
@@ -180,37 +180,34 @@ class RuleController extends Controller
             'G'  => ['type' => 'normal',   'properties' => []],
         ],
         'transitions' => [
-            'atribut1' => ['from' => 'S',    'to' => 'A'],
-            'atribut2' => ['from' => 'B',    'to' => 'A'],
-            'Kata_sambung1'  => ['from' => 'A', 'to' => 'B'],
-            'Kata_sambung2'  => ['from' => 'E', 'to' => 'G'],
+            'atribut' => ['from' => ['S','B'],    'to' => 'A'],
+            'Kata_sambung'  => ['from' => 'A', 'to' => 'B'],
+            'Kata_sambung1'  => ['from' => 'E', 'to' => 'G'],
             'Atribut_kondisi' => ['from' => ['A'],    'to' => 'C'],
             'Operator_bukan'  => ['from' => ['C'], 'to' => 'D'],
             'data'  => ['from' => ['D'], 'to' => 'E'],
             'operator' => ['from' => ['C'],    'to' => 'F'],
-            'data'  => ['from' => ['F'], 'to' => 'E'],
-            'data'  => ['from' => ['C'], 'to' => 'E'],
-            'Atribut_kondisi'  => ['from' => ['G'], 'to' => 'C'],
+            'data1'  => ['from' => ['F'], 'to' => 'E'],
+            'data2'  => ['from' => ['C'], 'to' => 'E'],
+            'Atribut_kondisi1'  => ['from' => ['G'], 'to' => 'C'],
         ]
     ]);
+
     
     $loader->load($stateMachine);
     $stateMachine->setObject($document);
     $stateMachine->initialize();
 
-    echo $stateMachine->getCurrentState();
-    // => "draft"
+    $current_state = $stateMachine->getCurrentState();
+    if($current_state == 'S'){
 
-    // var_dump($stateMachine->can('data'));
-    // => bool(false)
+    }
 
-    var_dump($stateMachine->can('atribut1'));
-    // => bool(true)
+    // var_dump($stateMachine->can('atribut'));
 
-    $stateMachine->apply('atribut1');
-    $stateMachine->apply('Kata_sambung1');
-    echo $stateMachine->getCurrentState();
-    // => "proposed"
+    $stateMachine->apply('atribut');
+
+    // echo $stateMachine->getCurrentState();
 
     }
 }

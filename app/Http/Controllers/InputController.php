@@ -24,15 +24,12 @@ class InputController extends Controller
 
         $check_tail = RuleController::check_tail_att($parser);
 
-        if(str_word_count($string) < 3){
-            return "Error";
-        }
+        $check_rule = RuleController::check_rule_tree($check_tail);
+        // $check_rule = RuleController::checkrule($data[0]);
 
-        $check_rule = RuleController::checkrule($data[0]);
-
-        if( $kata_pertama == false ){
-            return ('wrong rule');
-        }
+        // if( $kata_pertama == false ){
+        //     return ('wrong rule');
+        // }
 
         return view("resultinput")->with('data',$data);
 
