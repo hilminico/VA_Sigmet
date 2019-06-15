@@ -26,6 +26,8 @@ class InputController extends Controller
 
         $check_rule = RuleController::check_rule_tree($check_tail);
 
+        $check_rule[6] = VAController::index();
+
         dd($check_rule);
 
         // $check_rule = RuleController::checkrule($data[0]);

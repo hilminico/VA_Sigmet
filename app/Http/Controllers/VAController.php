@@ -10,7 +10,7 @@ use Goutte;
 
 class VAController extends Controller
 {
-    public function index(){
+    public static function index(){
         $data = array();
         $response = "";
         $crawler = Goutte::request('GET', 'http://www.bom.gov.au/aviation/volcanic-ash/au-va-sigmet.shtml');
@@ -150,7 +150,6 @@ class VAController extends Controller
             $index = $index + 1;
         }
 
-        dd($parsedata);
-        return view('welcome')->with('getdata',$parsedata);    
+        return $parsedata;    
     }
 }

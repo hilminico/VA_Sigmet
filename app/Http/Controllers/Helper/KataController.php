@@ -20,19 +20,19 @@ class KataController extends Controller
     }
 
     public static function katapelengkap_dapatdiabaikan($katapelengkap){
-        $dict_kata_pelengkap = array('saja','daftar','ditawarkan','gunung');
+        $dict_kata_pelengkap = array('saja','daftar','data','list','info');
         $check = in_array($katapelengkap,$dict_kata_pelengkap) ;
         return $check;
     }
 
     public static function kataketerangan_dapatdiabaikan($kataketerangan){
-        $dict_kata_keterangan = array('di','pada','dari','yang','oleh','dengan');
+        $dict_kata_keterangan = array('di','pada','dari','yang','oleh','dengan','va');
         $check = in_array($kataketerangan,$dict_kata_keterangan) ;
         return $check;
     }
 
     public static function katatoken_attribut($att){
-        $dict_att = array( 'fir' , 'sequence_id' , 'validity' , 'info','va','cuaca');
+        $dict_att = array( 'detail' , 'daerah' , 'waktu','semua');
         $check = in_array($att,$dict_att) ;
         return $check;
     }
