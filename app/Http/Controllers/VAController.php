@@ -13,17 +13,17 @@ class VAController extends Controller
     public static function index(){
         $data = array();
         $response = "";
-        $crawler = Goutte::request('GET', 'http://www.bom.gov.au/aviation/volcanic-ash/au-va-sigmet.shtml');
-        $crawler->filter('.middle-column-round .product')->each(function ($node) {
-            $check = Va::where('dataraw', '=', $node->text())->exists();
-            if(!$check){
-                $va = Va::create([
-                    'dataraw' => $node->text()
-                ]);
-            }else{
-                return false;
-            }
-        });
+        // $crawler = Goutte::request('GET', 'http://www.bom.gov.au/aviation/volcanic-ash/au-va-sigmet.shtml');
+        // $crawler->filter('.middle-column-round .product')->each(function ($node) {
+        //     $check = Va::where('dataraw', '=', $node->text())->exists();
+        //     if(!$check){
+        //         $va = Va::create([
+        //             'dataraw' => $node->text()
+        //         ]);
+        //     }else{
+        //         return false;
+        //     }
+        // });
         $getdata = Va::get();
         $index = 0 ;
         foreach($getdata as $data){
@@ -122,14 +122,14 @@ class VAController extends Controller
             // Slice Waktu
             $pattern_waktu = preg_match('/pukul/',$data['3'][$i]);
                 if($pattern_waktu == true){
-                    $parsedata[$index]['waktu'] = $data[3][$i+1].' '.$data[3][$i+2];    
+                    $parsedata[$index][5] = $data[3][$i+1].' '.$data[3][$i+2];    
                 }        
             // Slice Waktu
 
             // Slice Tempat
             $pattern_tempat = preg_match('/daerah/',$data['3'][$i]);
                 if($pattern_tempat == true){
-                    $parsedata[$index]['daerah'] = str_replace("daerah ",'',$data['3'][$i]);    
+                    $parsedata[$index][6] = str_replace("daerah ",'',$data['3'][$i]);    
                 }        
             // Slice Tempat
 
@@ -137,9 +137,9 @@ class VAController extends Controller
                 $pattern_detail = preg_match('/Flight Information Region/',$data['3'][$i]);
                 if($pattern_detail == true){
                     for($loop_detail = $i+1 ; $loop_detail < count($data[3]) ; $loop_detail++){
-                        $parsedata[$index]['detail'][$loop_detail] = $data['3'][$loop_detail];    
+                        $parsedata[$index][7][$loop_detail] = $data['3'][$loop_detail];    
                     }
-                    $parsedata[$index]['detail'] = implode(' ',$parsedata[$index]['detail']);
+                    $parsedata[$index][7] = implode(' ',$parsedata[$index][7]);
                     continue;
                 }        
             // Slice Detail

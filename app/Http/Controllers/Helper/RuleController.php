@@ -211,4 +211,17 @@ class RuleController extends Controller
     return $param;
 
     }
+
+    public static function evaluator($param){
+        $check = $param[5];
+        $data_va = $param[6];
+        if($check == 'A'){
+            foreach($data_va as $dt){
+                if(array_key_exists("7",$dt)){
+                $param[7][] = $dt[7];
+                }
+            }
+        }
+        return $param;
+    }
 }

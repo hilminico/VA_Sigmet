@@ -72,28 +72,20 @@
     }
   </style>
     <body>
-    <div class="input"> inputan:{{ $data[0]}} </div>
+    <div class="input">  </div>
     </br>
     <table class="flat-table flat-table-1">
 	<thead>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>City</th>
-		<th>Donation</th>
+  @for($i=0;$i < sizeof($data[3]); $i++)
+		<th>{{$data[3][$i]}}</th>
+    @endfor
 	</thead>
 	<tbody>
+  @for($i=0;$i < sizeof($data[7]); $i++)
 		<tr>
-			<td>John</td>
-			<td>Smith</td>
-			<td>Seattle</td>
-			<td>$12.95</td>
+			<td>{{ $data[7][$i] }}</td>
 		</tr>
-		<tr>
-			<td>Eddy</td>
-			<td>Johnston</td>
-			<td>Palo Alto</td>
-			<td>$15</td>
-		</tr>
+    @endfor
 	</tbody>
 </table>
 <table class="flat-table flat-table-2">

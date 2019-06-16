@@ -28,15 +28,13 @@ class InputController extends Controller
 
         $check_rule[6] = VAController::index();
 
-        dd($check_rule);
+        $evaluator = RuleController::evaluator($check_rule);
 
         // $check_rule = RuleController::checkrule($data[0]);
 
         // if( $kata_pertama == false ){
         //     return ('wrong rule');
         // }
-
-        return view("resultinput")->with('data',$data);
-
+        return view("resultinput")->with('data',$evaluator);
     }
 }
