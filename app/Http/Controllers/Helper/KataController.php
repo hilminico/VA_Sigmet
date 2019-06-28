@@ -32,7 +32,7 @@ class KataController extends Controller
     }
 
     public static function katatoken_attribut($att){
-        $dict_att = array( 'detail' , 'daerah' , 'waktu','semua');
+        $dict_att = array( 'detail' , 'tempat' , 'waktu','semua');
         $check = in_array($att,$dict_att) ;
         return $check;
     }

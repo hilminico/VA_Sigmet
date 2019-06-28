@@ -8,228 +8,244 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../result.scss' "/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+ 
+        <!-- Styles -->
+        <style>
+
+        body {
+        margin: 0;
+        padding: 0;
+        font-family: "Lobster", cursive;
+        background: linear-gradient(-90deg, #2a1e5c, #3cbbb1);
+        }
+
+        h2 {
+        text-align: center;
+        }
+
+        .search {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        background: #fff;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        transition: width 0.5s;
+        overflow: hidden;
+        }
+
+        .search.active {
+        width: 600px;
+        }
+
+        .search.active .icon {
+        background: #3cbbb1;
+        }
+
+        .search.active .icon::before {
+        content: "";
+        position: absolute;
+        top: 7px;
+        left: 13px;
+        width: 18px;
+        height: 30px;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        border-right: 2px solid #fff;
+        transform: rotate(45deg);
+        transition: 0.5s;
+        }
+
+        .search.active .icon::after {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 13px;
+        width: 18px;
+        height: 30px;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        border-right: 2px solid #fff;
+        transform: rotate(-45deg);
+        transition: 0.5s;
+        }
+
+        .search input {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: calc(100% - 90px);
+        height: 60px;
+        border: none;
+        outline: none;
+        font-size: 36px;
+        padding: 0 10px;
+        color: #666;
+        font-family: "Lobster", cursive;
+        }
+
+        .icon {
+        width: 60px;
+        height: 60px;
+        background: #fff;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        transition: 0.5s;
+        border-radius: 4px;
+        }
+
+        .icon::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 24px;
+        height: 24px;
+        background: transparent;
+        border: 2px solid #262626;
+        border-radius: 50%;
+        }
+
+        .icon::after {
+        content: "";
+        position: absolute;
+        top: 25px;
+        left: 35px;
+        width: 18px;
+        height: 18px;
+        background: transparent;
+        border-left: 2px solid #262626;
+        transform: rotate(-45deg);
+        }
+        table{
+          position:absolute;
+          top: 60%;
+          margin:5%;
+          text-transform:uppercase;
+        }
+        table thead th{
+          border:2px solid #fff;
+        }
+        table tr td{
+          border:2px solid #fff;
+          padding:5px;
+        }
+
+        </style>
 
     </head>
-    <style>
-    body{
-      width:100%;
-    }
-    .input{
-      text-align:center;
-    }
-    .flat-table {
-      margin-left:auto;
-      margin-right:auto;
-      margin-bottom: 20px;
-      border-collapse:collapse;
-      font-family: 'Lato', Calibri, Arial, sans-serif;
-      border: none;
-                  border-radius: 3px;
-                -webkit-border-radius: 3px;
-                -moz-border-radius: 3px;
-    }
-    .flat-table th, .flat-table td {
-      box-shadow: inset 0 -1px rgba(0,0,0,0.25), 
-        inset 0 1px rgba(0,0,0,0.25);
-    }
-    .flat-table th {
-      font-weight: normal;
-      -webkit-font-smoothing: antialiased;
-      padding: 1em;
-      color: rgba(0,0,0,0.45);
-      text-shadow: 0 0 1px rgba(0,0,0,0.1);
-      font-size: 1.5em;
-    }
-    .flat-table td {
-      color: #f7f7f7;
-      padding: 0.7em 1em 0.7em 1.15em;
-      text-shadow: 0 0 1px rgba(255,255,255,0.1);
-      font-size: 1.4em;
-    }
-    .flat-table tr {
-      -webkit-transition: background 0.3s, box-shadow 0.3s;
-      -moz-transition: background 0.3s, box-shadow 0.3s;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-    .flat-table-1 {
-      background: #336ca6;
-    }
-    .flat-table-1 tr:hover {
-      background: rgba(0,0,0,0.19);
-    }
-    .flat-table-2 tr:hover {
-      background: rgba(0,0,0,0.1);
-    }
-    .flat-table-2 {
-      background: #f06060;
-    }
-    .flat-table-3 {
-      background: #52be7f;
-    }
-    .flat-table-3 tr:hover {
-      background: rgba(0,0,0,0.1);
-    }
-  </style>
-    <body>
-    <div class="input">  </div>
-    </br>
-    <table class="flat-table flat-table-1">
-	<thead>
-  @for($i=0;$i < sizeof($data[3]); $i++)
-		<th>{{$data[3][$i]}}</th>
-    @endfor
-	</thead>
-	<tbody>
-  @for($i=0;$i < sizeof($data[7]); $i++)
-		<tr>
-			<td>{{ $data[7][$i] }}</td>
-		</tr>
-    @endfor
-	</tbody>
-</table>
-<table class="flat-table flat-table-2">
-	<thead>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>City</th>
-		<th>Donation</th>
-	</thead>
-	<tbody>
-		<tr>
-			<td>John</td>
-			<td>Smith</td>
-			<td>Seattle</td>
-			<td>$12.95</td>
-		</tr>
-		<tr>
-			<td>Eddy</td>
-			<td>Johnston</td>
-			<td>Palo Alto</td>
-			<td>$15</td>
-		</tr>
-	</tbody>
-</table>
-<table class="flat-table flat-table-3">
-	<thead>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>City</th>
-		<th>Donation</th>
-	</thead>
-	<tbody>
-		<tr>
-			<td>John</td>
-			<td>Smith</td>
-			<td>Seattle</td>
-			<td>$12.95</td>
-		</tr>
-		<tr>
-			<td>Eddy</td>
-			<td>Johnston</td>
-			<td>Palo Alto</td>
-			<td>$15</td>
-		</tr>
-	</tbody>
-</table>
+
+<body>
+  <h2>Expanding Search Navigation</h2>
+  <div class="search">
+    <form action="/actioninput">
+        <input type="text" placeholder="Search For Jobs..." id="input" name="command">
+    <div class="icon" onclick="toggleSearch()"></div>
+  </div>
+        <input type="submit" placeholder="Scanner" id="input" name="scanner">
+        <input type="submit" placeholder="Token" id="input" name="token">
+        <input type="submit" placeholder="Parsing" id="input" name="parsing">
+    </form>
+
+
+    <table>
+      <thead>
+      @for($i=0;$i < sizeof($data[3]); $i++)
+        <th>{{$data[3][$i]}}</th>
+        @endfor
+      </thead>
+      <tbody>
+      @for($i=0;$i < sizeof($data[7]); $i++)
+        <tr>
+          <td>{{ $data[7][$i] }}</td>
+        </tr>
+        @endfor
+      </tbody>
+    </table>
+
+</body>
+
+
+    <!-- <table style="width:90%;margin:auto;background:#ecf0f1">
+        <tr>
+            <td>Kata Tanya</td>
+            <td>Kata Perintah</td>
+            <td>Kata Pelengkap</td>
+            <td>Kata Keterangan</td>
+            <td>Attribut</td>
+            <td>Kata Sambung</td>
+        </tr>
+        <tr>
+            <td>Dimana</td>
+            <td>Tampilkan</td>
+            <td>Saja</td>
+            <td>Di</td>
+            <td>Detail</td>
+            <td>Dan</td>
+        </tr>
+        <tr>
+            <td>Apa</td>
+            <td>Tampil</td>
+            <td>Daftar</td>
+            <td>Pada</td>
+            <td>Tempat</td>
+            <td>,</td>
+        </tr>
+        <tr>
+            <td>Apa saja</td>
+            <td>Cari</td>
+            <td>Data</td>
+            <td>Dari</td>
+            <td>Waktu</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>List</td>
+            <td>Yang</td>
+            <td>Semua</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Info</td>
+            <td>Oleh</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Dengan</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>VA</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table> -->
     </body>
+    <script>
+    function toggleSearch() {
+    const search = document.querySelector(".search");
+    search.classList.toggle("active");
+    }
+
+    </script>
 </html>
-
-
-<script>
-// CONFIGS
-var tableSelector = 'table';
-var targetBreakpoint = 500;
-var currentVisibleColumn = 1;
-var nextButtonText = 'Compare Next';
-
-// SETUP/SELECT REUSABLE ELEMENTS
-var table = document.querySelector( tableSelector );
-var allCells = table.querySelectorAll('th, td');
-var columnHeaders = table.querySelectorAll('thead th:not(:empty)');
-var rowHeaders = table.querySelectorAll('tbody th');
-var nextButton = document.createElement('button');
-
-function createButtons() {
-  nextButton.textContent = nextButtonText;
-  nextButton.style.display =  'none';
-
-  table.parentNode.insertBefore(nextButton, table.nextSibling );
-  
-  nextButton.addEventListener('click', function(){
-    currentVisibleColumn = currentVisibleColumn + 1 > columnHeaders.length ? 1 : currentVisibleColumn + 1;
-    showCurrentlyVisible();
-  });
-}
-
-function showCurrentlyVisible() {
-    // Get the Items we're going to show. The :not(:empty) query here is because sometimes you have empty <th>s in <thead>
-    var currentlyVisibleColHeader = document.querySelector('thead th:not(:empty):nth-of-type( '+ currentVisibleColumn +')');
-    var currentlyVisibleCells = document.querySelectorAll('tbody td:nth-of-type(' +currentVisibleColumn+ ')');
-
-    // Hide All The Cells
-    for(var i=0;i<allCells.length;i++ ) { 
-      allCells[i].style.display = 'none'; 
-    }
-
-    // Show Currently Visible Col Header
-    currentlyVisibleColHeader.style.display = 'block';
-
-    // Show Currently Visible Cells
-    for( var i=0;i<currentlyVisibleCells.length;i++) {
-      currentlyVisibleCells[i].style.display = 'block';
-    }
-
-    // Show Row Headers
-    for( var i=0;i<rowHeaders.length;i++) {
-      rowHeaders[i].style.display = 'block';
-    }
-}
-
-function updateTable() {
-  
-  // Get the Table's Width. Might as well go FULL Container Query over here.
-  var tableWidth = table.getBoundingClientRect().width;
-  
-  // If the table explodes off the viewport or is wider than the target breakpoint
-  if ( tableWidth > window.innerWidth || tableWidth < targetBreakpoint ) {
-
-    if(table.getAttribute('data-comparing') != 'active') {
-      // Set the comparison state to "Active"
-      table.setAttribute('data-comparing','active');
-
-      // Show Next Button
-      nextButton.style.display =  'block';
-    
-      // Show the currently visible column
-      showCurrentlyVisible();
-
-    }
-
-  } else {
-    
-    if(table.getAttribute('data-comparing') == 'active') {
-
-      // Turn off comparing    
-      table.setAttribute('data-comparing','');
-
-      // Hide the next button
-      nextButton.style.display =  'none';
-
-      // Remove styles from all cells, ergo, show all the cells
-      for( var i=0;i<allCells.length;i++ ) {
-        allCells[i].style.display = ''; 
-      }
-
-      // Remove styles from all row headers
-      for( var i=0;i<rowHeaders.length;i++) {
-        rowHeaders[i].style.display = '';
-      }
-    }
-  }
-}
-
-createButtons();
-updateTable();
-window.addEventListener('resize', updateTable);
-</script>

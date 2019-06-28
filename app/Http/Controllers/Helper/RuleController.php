@@ -92,19 +92,6 @@ class RuleController extends Controller
 
     }
 
-    public function dict_rule(){
-        // S = <atribut>A 
-        // A = <kata_sambung>B | ε | <atribut_kondisi>C
-        // B = <atribut>A
-        // C = <operator_bukan>D | <data>E | <operator>F
-        // D = <data>E
-        // E = <kata_sambung>G | ε
-        // F = <data>E 
-        // G = <atribut_kondisi>C
-
-
-    }
-
     public static function checkrule($string){
         $explode_string = explode(' ',$string);
 
@@ -216,9 +203,25 @@ class RuleController extends Controller
         $check = $param[5];
         $data_va = $param[6];
         if($check == 'A'){
-            foreach($data_va as $dt){
-                if(array_key_exists("7",$dt)){
-                $param[7][] = $dt[7];
+            if($param[3][0] == "waktu") {
+                foreach($data_va as $dt){
+                    if(array_key_exists("7",$dt)){
+                    $param[7][] = $dt[5];
+                    }
+                }
+            }
+            elseif($param[3][0] == "tempat") {
+                foreach($data_va as $dt){
+                    if(array_key_exists("7",$dt)){
+                    $param[7][] = $dt[6];
+                    }
+                }
+            }
+            elseif($param[3][0] == "detail"){
+                foreach($data_va as $dt){
+                    if(array_key_exists("7",$dt)){
+                    $param[7][] = $dt[7];
+                    }
                 }
             }
         }

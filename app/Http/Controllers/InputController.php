@@ -30,11 +30,6 @@ class InputController extends Controller
 
         $evaluator = RuleController::evaluator($check_rule);
 
-        // $check_rule = RuleController::checkrule($data[0]);
-
-        // if( $kata_pertama == false ){
-        //     return ('wrong rule');
-        // }
         return view("resultinput")->with('data',$evaluator);
     }
 }

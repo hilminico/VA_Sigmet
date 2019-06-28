@@ -12,7 +12,7 @@ class VAController extends Controller
 {
     public static function index(){
         $data = array();
-        $response = "";
+        // $response = "";
         // $crawler = Goutte::request('GET', 'http://www.bom.gov.au/aviation/volcanic-ash/au-va-sigmet.shtml');
         // $crawler->filter('.middle-column-round .product')->each(function ($node) {
         //     $check = Va::where('dataraw', '=', $node->text())->exists();

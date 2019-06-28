@@ -12,102 +12,207 @@
  
         <!-- Styles -->
         <style>
-            html, body {
-                color: #636b6f;
-                font-weight: 50;
-                font-size:14px;
-                margin: 0;
-            }
-            body{
-                background: #343d46;
-            }
-            
-            .box{
-                margin: 100px auto;
-                width: 300px;
-                height: 50px;
-            }
 
-            .container-4{
-                overflow: hidden;
-                width: 300px;
-                vertical-align: middle;
-                white-space: nowrap;
-            }
+        body {
+        margin: 0;
+        padding: 0;
+        font-family: "Lobster", cursive;
+        background: linear-gradient(-90deg, #2a1e5c, #3cbbb1);
+        }
 
-            .container-4 input#search{
-                width: 300px;
-                height: 50px;
-                background: #2b303b;
-                border: none;
-                font-size: 10pt;
-                float: left;
-                color: #fff;
-                padding-left: 15px;
-                -webkit-border-radius: 5px;
-                -moz-border-radius: 5px;
-                border-radius: 5px;
-            }
+        h2 {
+        text-align: center;
+        }
 
-            .container-4 input#search::-webkit-input-placeholder {
-                color: #65737e;
-            }
-            
-            .container-4 input#search:-moz-placeholder { /* Firefox 18- */
-                color: #65737e;  
-            }
-            
-            .container-4 input#search::-moz-placeholder {  /* Firefox 19+ */
-                color: #65737e;  
-            }
-            
-            .container-4 input#search:-ms-input-placeholder {  
-                color: #65737e;  
-            }
+        .search {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        background: #fff;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        transition: width 0.5s;
+        overflow: hidden;
+        }
 
-            .container-4 button.icon{
-                -webkit-border-top-right-radius: 5px;
-                -webkit-border-bottom-right-radius: 5px;
-                -moz-border-radius-topright: 5px;
-                -moz-border-radius-bottomright: 5px;
-                border-top-right-radius: 5px;
-                border-bottom-right-radius: 5px;
-                
-                border: none;
-                background: #232833;
-                height: 50px;
-                width: 50px;
-                color: #4f5b66;
-                opacity: 0;
-                font-size: 10pt;
-                
-                -webkit-transition: all .55s ease;
-                -moz-transition: all .55s ease;
-                -ms-transition: all .55s ease;
-                -o-transition: all .55s ease;
-                transition: all .55s ease;
-            }
+        .search.active {
+        width: 600px;
+        }
 
-            .container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon{
-                outline: none;
-                opacity: 1;
-                margin-left: -50px;
-            }
-            
-            .container-4:hover button.icon:hover{
-                background: white;
-            }
+        .search.active .icon {
+        background: #3cbbb1;
+        }
+
+        .search.active .icon::before {
+        content: "";
+        position: absolute;
+        top: 7px;
+        left: 13px;
+        width: 18px;
+        height: 30px;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        border-right: 2px solid #fff;
+        transform: rotate(45deg);
+        transition: 0.5s;
+        }
+
+        .search.active .icon::after {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 13px;
+        width: 18px;
+        height: 30px;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        border-right: 2px solid #fff;
+        transform: rotate(-45deg);
+        transition: 0.5s;
+        }
+
+        .search input {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: calc(100% - 90px);
+        height: 60px;
+        border: none;
+        outline: none;
+        font-size: 36px;
+        padding: 0 10px;
+        color: #666;
+        font-family: "Lobster", cursive;
+        }
+
+        .icon {
+        width: 60px;
+        height: 60px;
+        background: #fff;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        transition: 0.5s;
+        border-radius: 4px;
+        }
+
+        .icon::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 24px;
+        height: 24px;
+        background: transparent;
+        border: 2px solid #262626;
+        border-radius: 50%;
+        }
+
+        .icon::after {
+        content: "";
+        position: absolute;
+        top: 25px;
+        left: 35px;
+        width: 18px;
+        height: 18px;
+        background: transparent;
+        border-left: 2px solid #262626;
+        transform: rotate(-45deg);
+        }
         </style>
 
     </head>
-    <body>
-    <div class="box">
-        <div class="container-4">
-            <form action="/actioninput" method="GET">
-                <input type="search" id="search" placeholder="search ? . . ." name="command">
-                <button type="submit" class="icon"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-    </div>
+
+<body>
+  <h2>Expanding Search Navigation</h2>
+  <div class="search">
+    <form action="/actioninput">
+        <input type="text" placeholder="Search For Jobs..." id="input" name="command">
+    </form>
+    <div class="icon" onclick="toggleSearch()"></div>
+  </div>
+
+</body>
+
+
+    <!-- <table style="width:90%;margin:auto;background:#ecf0f1">
+        <tr>
+            <td>Kata Tanya</td>
+            <td>Kata Perintah</td>
+            <td>Kata Pelengkap</td>
+            <td>Kata Keterangan</td>
+            <td>Attribut</td>
+            <td>Kata Sambung</td>
+        </tr>
+        <tr>
+            <td>Dimana</td>
+            <td>Tampilkan</td>
+            <td>Saja</td>
+            <td>Di</td>
+            <td>Detail</td>
+            <td>Dan</td>
+        </tr>
+        <tr>
+            <td>Apa</td>
+            <td>Tampil</td>
+            <td>Daftar</td>
+            <td>Pada</td>
+            <td>Tempat</td>
+            <td>,</td>
+        </tr>
+        <tr>
+            <td>Apa saja</td>
+            <td>Cari</td>
+            <td>Data</td>
+            <td>Dari</td>
+            <td>Waktu</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>List</td>
+            <td>Yang</td>
+            <td>Semua</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Info</td>
+            <td>Oleh</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Dengan</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>VA</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table> -->
     </body>
+    <script>
+    function toggleSearch() {
+    const search = document.querySelector(".search");
+    search.classList.toggle("active");
+    }
+
+    </script>
 </html>
