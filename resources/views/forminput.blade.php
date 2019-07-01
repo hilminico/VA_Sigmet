@@ -7,212 +7,243 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
- 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="temp/style.css">
+        <link rel="author" href="humans.txt">
+        <link rel="stylesheet" type="text/css" href="{{ URL::asset('index.css') }}"> 
         <!-- Styles -->
-        <style>
-
-        body {
-        margin: 0;
-        padding: 0;
-        font-family: "Lobster", cursive;
-        background: linear-gradient(-90deg, #2a1e5c, #3cbbb1);
-        }
-
-        h2 {
-        text-align: center;
-        }
-
-        .search {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80px;
-        height: 80px;
-        background: #fff;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        border-radius: 4px;
-        transition: width 0.5s;
-        overflow: hidden;
-        }
-
-        .search.active {
-        width: 600px;
-        }
-
-        .search.active .icon {
-        background: #3cbbb1;
-        }
-
-        .search.active .icon::before {
-        content: "";
-        position: absolute;
-        top: 7px;
-        left: 13px;
-        width: 18px;
-        height: 30px;
-        background: transparent;
-        border: none;
-        border-radius: 0;
-        border-right: 2px solid #fff;
-        transform: rotate(45deg);
-        transition: 0.5s;
-        }
-
-        .search.active .icon::after {
-        content: "";
-        position: absolute;
-        top: 20px;
-        left: 13px;
-        width: 18px;
-        height: 30px;
-        background: transparent;
-        border: none;
-        border-radius: 0;
-        border-right: 2px solid #fff;
-        transform: rotate(-45deg);
-        transition: 0.5s;
-        }
-
-        .search input {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        width: calc(100% - 90px);
-        height: 60px;
-        border: none;
-        outline: none;
-        font-size: 36px;
-        padding: 0 10px;
-        color: #666;
-        font-family: "Lobster", cursive;
-        }
-
-        .icon {
-        width: 60px;
-        height: 60px;
-        background: #fff;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        transition: 0.5s;
-        border-radius: 4px;
-        }
-
-        .icon::before {
-        content: "";
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        width: 24px;
-        height: 24px;
-        background: transparent;
-        border: 2px solid #262626;
-        border-radius: 50%;
-        }
-
-        .icon::after {
-        content: "";
-        position: absolute;
-        top: 25px;
-        left: 35px;
-        width: 18px;
-        height: 18px;
-        background: transparent;
-        border-left: 2px solid #262626;
-        transform: rotate(-45deg);
-        }
-        </style>
-
     </head>
 
-<body>
-  <h2>Expanding Search Navigation</h2>
-  <div class="search">
-    <form action="/actioninput">
-        <input type="text" placeholder="Search For Jobs..." id="input" name="command">
+
+  <body>
+
+  <div class="wraper">
+  <div class="container">
+    <div class="container--logo">
+      <img src="{{URL::asset('logo.jpeg') }}" alt="logo">
+    </div> <!-- End of the logo -->
+
+    <form action="/action" class="container--form form">
+      <input type="text" class="container--form--search" placeholder="Search..." name="command">
+
+      <div class="container--form--btn">
+
+      <button class="container--form--btn--submit">Sigmet Search</button>
+        
+        <button class="container--form--btn--random">I'm feeling lucky </button>
+
+        
+      </div>
+
     </form>
-    <div class="icon" onclick="toggleSearch()"></div>
-  </div>
+  </div> <!-- end of container -->
 
-</body>
+<div id="content" class="content">
+</div><!--  End of content -->
 
 
-    <!-- <table style="width:90%;margin:auto;background:#ecf0f1">
-        <tr>
-            <td>Kata Tanya</td>
-            <td>Kata Perintah</td>
-            <td>Kata Pelengkap</td>
-            <td>Kata Keterangan</td>
-            <td>Attribut</td>
-            <td>Kata Sambung</td>
-        </tr>
-        <tr>
-            <td>Dimana</td>
-            <td>Tampilkan</td>
-            <td>Saja</td>
-            <td>Di</td>
-            <td>Detail</td>
-            <td>Dan</td>
-        </tr>
-        <tr>
-            <td>Apa</td>
-            <td>Tampil</td>
-            <td>Daftar</td>
-            <td>Pada</td>
-            <td>Tempat</td>
-            <td>,</td>
-        </tr>
-        <tr>
-            <td>Apa saja</td>
-            <td>Cari</td>
-            <td>Data</td>
-            <td>Dari</td>
-            <td>Waktu</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>List</td>
-            <td>Yang</td>
-            <td>Semua</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>Info</td>
-            <td>Oleh</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Dengan</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>VA</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table> -->
-    </body>
-    <script>
-    function toggleSearch() {
-    const search = document.querySelector(".search");
-    search.classList.toggle("active");
-    }
+<div class="random--search">
+  
+</div> <!-- End of random search -->
+</div> <!-- end of wrapper -->
 
-    </script>
+
+<footer class="footer">
+  <!-- <p class="developed">2019</p> -->
+</footer>
+    
+    
+<script src="App/js.js"></script>
+<script src="App/containerTop.js"></script>
+
+<!-- <script>
+var title, information, userInput;
+
+
+var init = function(){
+   wikiSearchData();
+   $('.container--form--btn--submit').on('click', wikiSearchData);
+    $('.container--form--btn--random').on('click', randomSearch);
+  
+};
+
+
+ var wikiSearchData = function(){
+   userInput = $('.container--form--search').val();
+
+
+     //The Ajax call to the server
+   $.ajax({
+       url:'https://en.wikipedia.org/w/api.php',
+       data:{
+         'action':'opensearch',
+         'search':userInput,
+         // '$wgEnableOpenSearchSuggest':'true',
+         'limit':'16',
+         'format':'json'
+       },
+       dataType:'jsonp',
+
+       //If the call to the server success, then do this
+       success:function(data, test){
+           // console.log(data);
+           errr = data.error;
+           title = data[1];
+           information = data[2];
+           console.log(information);
+           link = data[3];
+
+
+
+   // if input is empty, output this 
+   if(userInput === ''){
+       $('.content').html( "<p class='para'>" + 'Sorry parameter needs to be set before searching ...' + "</p>");
+
+
+
+     $('.container--form--btn--random').on('click', function(){
+       $('.content').html( "<p class='para'>" + 'Your random search for today is ...' + "</p>");
+     });
+   }
+
+
+   // If inpurt is not empty, then do this
+   else{
+     $('.para').remove();
+
+     for(var x = 0; x < title.length; x++){
+       $("#content").prepend("<div class='content--info'>" +  "<h3>" + title[x] + "</h3>" + "<p clas'information'>" + information[x].slice(0, 150) + '...' + "</>" + "<a class='link' href=" + link[x] + " target='_blank'>" + "</a>" + "</div>");
+
+
+     }
+   } //end of else statement
+
+           appending();
+
+       }, //success function
+
+       //Error function, in case an error pops 
+       error:function(err){
+         // document.write('Server error');
+         // $('#content').text('No Result found');
+         } //error function
+   }); //Ajax function
+
+
+
+
+ }; // end of wikiSearchData
+
+
+
+ var appending = function(){
+
+
+   // Add icons, and read more external links
+   $('.link').html("<i class='ion-link'>" + "</i>" + "<p class='read-more'>" + "Read more..." + "</p>");
+
+   outPutSearch();
+
+ };
+
+
+
+ //Outputting the content to the DOM
+ var outPutSearch = function(){
+   $('.random--search h3, .random--search p').remove();
+
+   $('.bord').remove();
+
+        // addingClass();
+     };
+
+
+
+
+// Random Search API Call
+var randomSearch = function(){
+  //getting the Random API Call
+   urlLink = 'http://en.wikipedia.org/w/api.php?action=query&generator=random&grnnamespace=0&prop=extracts&explaintext&exsentences=3&format=json&callback=?';
+   
+
+     //Grabbing the Random Data from the API
+   $.getJSON(urlLink, function(data){
+    result = data.query.pages;
+
+     //Mapping to get the right data from the api
+     $.map(result, function(content){
+       description = content.extract;
+       header = content.title;
+       id = content.pageid;
+
+       outPutRandom();
+
+
+     }); // end of map method
+   }); // end of getJSON
+
+};
+
+
+// Outputing elements to the DOM after the API call. 
+var outPutRandom = function(){
+ $('.random--search').html( "<h3 class='random--information'>" + header + "</h3>" + "<p class='random--information'>" + description +"</p>" + "<a class='link' href='http://en.wikipedia.org/?curid=" + id + " target='_blank'>" + "<p>" + " read more" +"</p>" + "</a>");
+
+};
+
+
+
+
+
+ // $('.container--form--btn--submit, .container--form--btn--random').on('click', function(){
+ //   $('.footer').addClass('down');
+ // });
+
+init();
+
+
+
+//adding different classes to the DOM to style it
+
+var container = '.container',
+   logo = '.container--logo',
+   form = '.container--form',
+   search = '.container--form--search',
+   btn = '.container--form--btn',
+   submit = '.container--form--btn--submit',
+   random = '.container--form--btn--random',
+   content = '.content',
+   randomSearch = '.random--search';
+
+
+// putting the container and the logo on the top and style it.
+var putTop = function(element, action) {
+       $(element).on(action, function(){
+     $(random).addClass('random1');
+     $(container).addClass('main');
+     $(logo).addClass('logo');
+     $(form).addClass('form1');
+     $(search).addClass('search1');
+     $(btn).addClass('btn1');
+     $(submit).text('');
+     $(submit).addClass('result');
+     $(submit).addClass('ion-ios-search');
+     $('.para').css('display', 'none');
+
+})
+};
+
+//firing the functions on different events
+
+putTop(submit, 'click');
+putTop(random, 'click');
+putTop(search, 'keypress');
+
+ $('.container--form--btn--random').on('click', function(){
+   $('.random--search').addClass('bord');
+ });
+
+</script> -->
+
 </html>

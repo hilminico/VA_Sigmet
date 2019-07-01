@@ -29,7 +29,7 @@ class InputController extends Controller
         $check_rule[6] = VAController::index();
 
         $evaluator = RuleController::evaluator($check_rule);
-
+        dd($evaluator);
         return view("resultinput")->with('data',$evaluator);
     }
 }
