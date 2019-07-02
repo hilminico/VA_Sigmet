@@ -24,16 +24,12 @@
       <img src="{{URL::asset('logo.jpeg') }}" alt="logo">
     </div> <!-- End of the logo -->
 
-    <form action="/action" class="container--form form">
+    <form action="#" class="container--form form">
       <input type="text" class="container--form--search" placeholder="Search..." name="command">
 
-      <div class="container--form--btn">
-
-      <button class="container--form--btn--submit">Sigmet Search</button>
-        
-        <button class="container--form--btn--random">I'm feeling lucky </button>
-
-        
+      <div class="container--form--btn button-home">
+        <button class="container--form--btn--submit">Sigmet Search</button>
+        <button class="container--form--btn--random ">I'm feeling lucky </button>
       </div>
 
     </form>
@@ -60,7 +56,6 @@
 <script>
 var title, information, userInput;
 
-
 var init = function(){
    wikiSearchData();
    $('.container--form--btn--submit').on('click', wikiSearchData);
@@ -68,10 +63,8 @@ var init = function(){
   
 };
 
-
  var wikiSearchData = function(){
    userInput = $('.container--form--search').val();
-
 
      //The Ajax call to the server
    $.ajax({
@@ -94,27 +87,21 @@ var init = function(){
            console.log(information);
            link = data[3];
 
-
-
    // if input is empty, output this 
    if(userInput === ''){
        $('.content').html( "<p class='para'>" + 'Sorry parameter needs to be set before searching ...' + "</p>");
-
-
 
      $('.container--form--btn--random').on('click', function(){
        $('.content').html( "<p class='para'>" + 'Your random search for today is ...' + "</p>");
      });
    }
 
-
-   // If inpurt is not empty, then do this
+   // If input is not empty, then do this
    else{
      $('.para').remove();
 
      for(var x = 0; x < title.length; x++){
        $("#content").prepend("<div class='content--info'>" +  "<h3>" + title[x] + "</h3>" + "<p clas'information'>" + information[x].slice(0, 150) + '...' + "</>" + "<a class='link' href=" + link[x] + " target='_blank'>" + "</a>" + "</div>");
-
 
      }
    } //end of else statement
@@ -130,15 +117,10 @@ var init = function(){
          } //error function
    }); //Ajax function
 
-
-
-
  }; // end of wikiSearchData
 
 
-
  var appending = function(){
-
 
    // Add icons, and read more external links
    $('.link').html("<i class='ion-link'>" + "</i>" + "<p class='read-more'>" + "Read more..." + "</p>");
@@ -146,8 +128,6 @@ var init = function(){
    outPutSearch();
 
  };
-
-
 
  //Outputting the content to the DOM
  var outPutSearch = function(){
@@ -158,14 +138,10 @@ var init = function(){
         // addingClass();
      };
 
-
-
-
 // Random Search API Call
 var randomSearch = function(){
   //getting the Random API Call
    urlLink = 'http://en.wikipedia.org/w/api.php?action=query&generator=random&grnnamespace=0&prop=extracts&explaintext&exsentences=3&format=json&callback=?';
-   
 
      //Grabbing the Random Data from the API
    $.getJSON(urlLink, function(data){
@@ -179,12 +155,10 @@ var randomSearch = function(){
 
        outPutRandom();
 
-
      }); // end of map method
    }); // end of getJSON
 
 };
-
 
 // Outputing elements to the DOM after the API call. 
 var outPutRandom = function(){
@@ -192,19 +166,7 @@ var outPutRandom = function(){
 
 };
 
-
-
-
-
- // $('.container--form--btn--submit, .container--form--btn--random').on('click', function(){
- //   $('.footer').addClass('down');
- // });
-
 init();
-
-
-
-//adding different classes to the DOM to style it
 
 var container = '.container',
    logo = '.container--logo',
@@ -215,7 +177,6 @@ var container = '.container',
    random = '.container--form--btn--random',
    content = '.content',
    randomSearch = '.random--search';
-
 
 // putting the container and the logo on the top and style it.
 var putTop = function(element, action) {

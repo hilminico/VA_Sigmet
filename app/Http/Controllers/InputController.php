@@ -13,6 +13,12 @@ class InputController extends Controller
         return view('forminput');    
 
     }
+    
+    public function result(){
+
+        return view('resultinput');    
+
+    }
 
     public function inputhandling(Request $request){
 
@@ -29,7 +35,9 @@ class InputController extends Controller
         $check_rule[6] = VAController::index();
 
         $evaluator = RuleController::evaluator($check_rule);
+
         dd($evaluator);
+
         return view("resultinput")->with('data',$evaluator);
     }
 }

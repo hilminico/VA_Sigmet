@@ -137,6 +137,9 @@ html, body{
 
 }
 
+.content-list{
+	width:66%;
+}
 @media (min-width: 730px) {
 
   #content {
@@ -147,7 +150,7 @@ html, body{
 #content div{/*border:.5px solid purple;*/
   margin:20px;
   padding-top:1.5rem;
-  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5); */
   width: 22rem;/*		height: 18rem;*/
   display: -webkit-box;
   display: -ms-flexbox;
@@ -263,6 +266,9 @@ i{
 
 }
 
+.button-home{
+	margin-top:1rem;
+}
 /*	position: fixed;*/
 
 @media (min-width: 730px){
