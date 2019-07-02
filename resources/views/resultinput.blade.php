@@ -40,28 +40,25 @@
     <div class="col-sm-8">
         <div id="content">
                 <div class="content--info col-sm content-list">
-                    <h3>ASD (album)</h3>
                     <p clas'information'="">ASD is the fifth album by American post-hardcore band A Skylit Drive, released on October 9, 2015, through Tragic Hero Records.It's the first studio a...</p>
                 </div>
         </div>
 
         <div id="content">
                 <div class="content--info col-sm content-list">
-                    <h3>ASD (album)</h3>
                     <p clas'information'="">ASD is the fifth album by American post-hardcore band A Skylit Drive, released on October 9, 2015, through Tragic Hero Records.It's the first studio a...</p>
                 </div>
         </div>
 
         <div id="content">
             <div class="content--info col-sm content-list">
-                <h3>ASD (album)</h3>
                 <p clas'information'="">ASD is the fifth album by American post-hardcore band A Skylit Drive, released on October 9, 2015, through Tragic Hero Records.It's the first studio a...</p>
             </div>
         </div>
 
     </div>
-    <div class="col-sm-4">
-        <div class="content--info col-sm">
+    <div class="col-sm-4 left-border">
+        <div class="content--info col-sm side-bar">
             <h3>Asdrúbal Paniagua</h3>
             <p clas'information'="">Asdrúbal Paniagua Ramírez (born 29 July 1951, in San Rafael de Heredia) is a retired professional football player from Costa Rica....
         </p></div>

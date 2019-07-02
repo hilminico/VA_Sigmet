@@ -53,7 +53,7 @@
 <script src="App/js.js"></script>
 <script src="App/containerTop.js"></script>
 
-<script>
+<!-- <script>
 var title, information, userInput;
 
 var init = function(){
@@ -205,6 +205,6 @@ putTop(search, 'keypress');
    $('.random--search').addClass('bord');
  });
 
-</script>
+</script> -->
 
 </html>
