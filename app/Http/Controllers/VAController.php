@@ -11,7 +11,7 @@ use Goutte;
 class VAController extends Controller
 {
     public static function index(){
-        $data = array();
+        // $data = array();
         // $response = "";
         // $crawler = Goutte::request('GET', 'http://www.bom.gov.au/aviation/volcanic-ash/au-va-sigmet.shtml');
         // $crawler->filter('.middle-column-round .product')->each(function ($node) {
@@ -24,12 +24,11 @@ class VAController extends Controller
         //         return false;
         //     }
         // });
-        $getdata = Va::get();
+        $getdata = Va::orderBy('id','desc')->get();
         $index = 0 ;
         foreach($getdata as $data){
 
             $parsedata[] = ParseSigmet::parsedata($data->dataraw); //preprosessing 
-
             $parsedata[$index]['1'] = $data->dataraw;            
     
             $parsedata[$index]['2'] = explode(" ", $parsedata[$index]['0']);
@@ -107,49 +106,100 @@ class VAController extends Controller
                     $parsedata[$index]['3'][$i] = $singkatan;
                 }elseif($pattern_psn == true){
                     $parsedata[$index]['3'][$i] = str_replace("PSN","Position ",$parsedata[$index]['2'][$i]);
+                }else{
+                    $parsedata[$index]['3'][$i] = $parsedata[$index]['2'][$i]; 
                 }
             }
             $parsedata[$index]['4'] = implode(' ',$parsedata[$index]['3']);
-
 
             $index = $index + 1 ;
         }
 
         $index = 0 ;
+                
         foreach($parsedata as $data){
 
             for ($i=0 ; $i < count($data[3]) ; $i++){
             // Slice Waktu
-            $pattern_waktu = preg_match('/pukul/',$data['3'][$i]);
+            $pattern_waktu = preg_match("/^[0-9]{2}:[0-9]{2}$/",$data['3'][$i]);
                 if($pattern_waktu == true){
-                    $parsedata[$index][5] = $data[3][$i+1].' '.$data[3][$i+2];    
+                    $parsedata[$index][5]['Waktu'] = $data[3][$i].' '.$data[3][$i+1];    
                 }        
             // Slice Waktu
 
-            // Slice Tempat
-            $pattern_tempat = preg_match('/daerah/',$data['3'][$i]);
+            // Slice FIR
+            $pattern_tempat = preg_match('/^[0-9]{2}:[0-9]{2}$/',$data['3'][$i]);
                 if($pattern_tempat == true){
-                    $parsedata[$index][6] = str_replace("daerah ",'',$data['3'][$i]);    
+                    $parsedata[$index][5]['FIR'] = $data[3][$i+2];    
                 }        
-            // Slice Tempat
+            // Slice FIR
+            
+            // Slice Sigmet
+            $pattern_tempat = preg_match('/^SIGMET$/',$data['3'][$i]);
+                if($pattern_tempat == true){
+                    $parsedata[$index][5]['No Sigmet'] = $data[3][$i+1];    
+                }        
+            // Slice Sigmet
+
+            // Slice Valid
+            $pattern_tempat = preg_match('/^VALID$/',$data['3'][$i]);
+                if($pattern_tempat == true){
+                    $parsedata[$index][5]['No Valid'] = $data[3][$i+1];    
+                }        
+            // Slice Valid
+
+            // Slice Area Fir
+            $pattern_tempat = preg_match('/^Flight Information Region/',$data['3'][$i]);
+                if($pattern_tempat == true){
+                    $parsedata[$index][5]['Area Fir'] = $data[3][$i-2];    
+                }        
+            // Slice Area Fir
+
+            // Slice Name Area 
+                $pattern_tempat = preg_match('/^Flight Information Region/',$data['3'][$i]);
+                if($pattern_tempat == true){
+                    $parsedata[$index][5]['Name Area'] = $data[3][$i-1];    
+                }        
+            // Slice Name Area 
+
+            // Slice Name Area 
+                $pattern_tempat = preg_match('/^Flight Information Region/',$data['3'][$i]);
+                if($pattern_tempat == true){
+                    $parsedata[$index][5]['event'] = $data[3][$i+1].' '.$data[3][$i+2];    
+                }        
+            // Slice Name Area 
+        
+            // Slice Gunung
+                $pattern_tempat = preg_match('/^Mount$/',$data['3'][$i]);
+                if($pattern_tempat == true){
+                    $parsedata[$index][5]['Gunung'] = $data[3][$i+1];    
+                }        
+            // Slice Gunung
+
+            // Slice Gunung
+                $pattern_tempat = preg_match('/^Position$/',$data['3'][$i]);
+                if($pattern_tempat == true){
+                    $parsedata[$index][5]['Posisi'] = $data[3][$i+1].' '.$data[3][$i+2];    
+                }        
+            // Slice Gunung
+
 
             // Slice Detail
-                $pattern_detail = preg_match('/Flight Information Region/',$data['3'][$i]);
+                $pattern_detail = preg_match('/^Position$/',$data['3'][$i]);
                 if($pattern_detail == true){
-                    for($loop_detail = $i+1 ; $loop_detail < count($data[3]) ; $loop_detail++){
+                    for($loop_detail = $i+3 ; $loop_detail < count($data[3]) ; $loop_detail++){
                         $parsedata[$index][7][$loop_detail] = $data['3'][$loop_detail];    
                     }
-                    $parsedata[$index][7] = implode(' ',$parsedata[$index][7]);
+                    $parsedata[$index][5]['detail'] = implode(' ',$parsedata[$index][7]);
                     continue;
                 }        
             // Slice Detail
-        
-            }
 
+            }
 
             $index = $index + 1;
         }
-
+        // dd($parsedata);
         return $parsedata;    
     }
 }

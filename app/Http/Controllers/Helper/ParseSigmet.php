@@ -23,9 +23,11 @@ class ParseSigmet extends Controller
         $rawstring = str_replace(',','',$rawstring);
         $rawstring = str_replace('- ','-',$rawstring);
         $rawstring = str_replace(' -','-',$rawstring);
+        $rawstring = str_replace('=--------------------------------------------------------------------','',$rawstring);
+        $rawstring = str_replace(' =','',$rawstring);
+        $rawstring = str_replace('=','',$rawstring);
         
         //tokenizing 
-        // $piece[] = explode(" ", $rawstring);
         $piece[] = $rawstring;
         
         return $piece;
@@ -1398,7 +1400,7 @@ class ParseSigmet extends Controller
 
     public static function singkatan($kode){
         if($kode =='AT'){
-            return "di";
+            return "at";
         }
         elseif($kode =='BLW'){
             return "Below";

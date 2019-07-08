@@ -260,7 +260,6 @@ i{
 	background-color: #fff;
 
 	padding: 1.9rem;
-	border-bottom: 1px solid #e4e4e4;
 /*	box-shadow: 2px 10px 15px grey;*/
 
 
@@ -412,4 +411,24 @@ i{
 	border: 1px solid #aaa;
 	border-radius: 2rem;
 	box-shadow: 2px 5px 10px grey;
+}
+.wraper-header{
+	border-bottom: 1px solid #e4e4e4;
+	width:100%;
+}
+
+#content-main{
+padding-top: 1rem;
+padding-bottom: 1rem;
+display: -webkit-box;
+
+display: -ms-flexbox;
+
+display: flex;
+-webkit-box-pack: center;
+	-ms-flex-pack: center;
+		justify-content: center;
+-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+
 }

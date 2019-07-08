@@ -20,49 +20,74 @@
   <body>
 
   <div class="wraper">
-  <div class="container main">
-    <div class="container--logo logo">
-      <img src="http://localhost:8000/logo.jpeg" alt="logo">
-    </div> <!-- End of the logo -->
+    <div class="wraper-header">
+        <div class="container main">
+            <div class="container--logo logo">
+            <img src="http://localhost:8000/logo.jpeg" alt="logo">
+            </div> <!-- End of the logo -->
 
-    <form action="#" class="container--form form form1">
-      <input class="container--form--search search1" placeholder="Search..." name="command" type="text">
+            <form action="#" class="container--form form form1">
+            <input class="container--form--search search1" placeholder="Search..." name="command" type="text">
 
-      <div class="container--form--btn btn1">
-        <button class="container--form--btn--submit result ion-ios-search"></button>
-        <button class="container--form--btn--random  random1">I'm feeling lucky </button>
-      </div>
-
-    </form>
-  </div> <!-- end of container -->
-
-<div class="row">
-    <div class="col-sm-8">
-        <div id="content">
-                <div class="content--info col-sm content-list">
-                    <p clas'information'="">ASD is the fifth album by American post-hardcore band A Skylit Drive, released on October 9, 2015, through Tragic Hero Records.It's the first studio a...</p>
-                </div>
-        </div>
-
-        <div id="content">
-                <div class="content--info col-sm content-list">
-                    <p clas'information'="">ASD is the fifth album by American post-hardcore band A Skylit Drive, released on October 9, 2015, through Tragic Hero Records.It's the first studio a...</p>
-                </div>
-        </div>
-
-        <div id="content">
-            <div class="content--info col-sm content-list">
-                <p clas'information'="">ASD is the fifth album by American post-hardcore band A Skylit Drive, released on October 9, 2015, through Tragic Hero Records.It's the first studio a...</p>
+            <div class="container--form--btn btn1">
+                <button class="container--form--btn--submit result ion-ios-search"></button>
+                <button class="container--form--btn--random  random1">I'm feeling lucky </button>
             </div>
-        </div>
 
+            </form>
+        </div> <!-- end of container -->
     </div>
+    <div class="row">
+        <div class="col-sm-8">
+        <table>
+            @foreach($data[6] as $dt)
+                <div id="content-main">
+                    <div class="content--info col-sm content-list">
+                        @foreach($dt[5] as $key => $dta)
+                        <tr><p clas'information'="">{{ $key }} : {{ $dta }}</p></tr>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
+        </table>
+    </div>
+    
+
     <div class="col-sm-4 left-border">
-        <div class="content--info col-sm side-bar">
-            <h3>Asdrúbal Paniagua</h3>
-            <p clas'information'="">Asdrúbal Paniagua Ramírez (born 29 July 1951, in San Rafael de Heredia) is a retired professional football player from Costa Rica....
-        </p></div>
+        <div class="row">
+
+            <div class="col-sm-12">
+                <div class="content--info col-sm side-bar">
+                    <h3 style="text-align:center;">Scanner</h3>
+                    @foreach($data[1] as $dta)
+                        {{ $dta }} </br>
+                    @endforeach
+                </p></div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="content--info col-sm side-bar">
+                    <h3 style="text-align:center;">Token</h3>
+                     <?php $i=0; ?>
+                    @foreach($data[1] as $dt)
+                        {{ $dt }} -> {{ $data[0][$i] }}</br> 
+                        <?php $i++;?>
+                    @endforeach
+
+
+                </p></div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="content--info col-sm side-bar">
+                    <h3 style="text-align:center;">Translator</h3>
+                        Rule {{ $data[5] }} </br>
+                </p></div>
+            </div>
+
+        </div>
     </div>
+
 </div>
 
 <div class="random--search">
