@@ -183,7 +183,6 @@ class RuleController extends Controller
     $loader->load($stateMachine);
     $stateMachine->setObject($document);
     $stateMachine->initialize();
-        
     $current_state = $stateMachine->getCurrentState();
     foreach($param[4] as $par){
         $check = $stateMachine->can($par);
@@ -200,6 +199,7 @@ class RuleController extends Controller
     }
 
     public static function evaluator($param){
+        // dd($param);
         $check = $param[5];
         $data_va = $param[6];
         if($check == 'A'){
