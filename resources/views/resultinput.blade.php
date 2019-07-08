@@ -39,6 +39,13 @@
     </div>
     <div class="row">
         <div class="col-sm-8">
+        @if($data == 'Rule Salah')
+            <div id="content-main">
+                <div class="content--info col-sm content-list">
+                    <tr><p clas'information'="">Content Not Found</p></tr>
+                </div>
+            </div>
+        @else
         <table>
             @foreach($data[6] as $dt)
                 <div id="content-main">
@@ -50,18 +57,22 @@
                 </div>
             @endforeach
         </table>
+        @endif
     </div>
     
-
     <div class="col-sm-4 left-border">
         <div class="row">
 
             <div class="col-sm-12">
                 <div class="content--info col-sm side-bar">
                     <h3 style="text-align:center;">Scanner</h3>
-                    @foreach($data[1] as $dta)
-                        {{ $dta }} </br>
-                    @endforeach
+                    @if($data == 'Rule Salah')
+                        Error
+                    @else
+                        @foreach($data[1] as $dta)
+                            {{ $dta }} </br>
+                        @endforeach
+                    @endif
                 </p></div>
             </div>
 
@@ -69,11 +80,14 @@
                 <div class="content--info col-sm side-bar">
                     <h3 style="text-align:center;">Token</h3>
                      <?php $i=0; ?>
-                    @foreach($data[1] as $dt)
+                     @if($data == 'Rule Salah')
+                        Error
+                    @else
+                     @foreach($data[1] as $dt)
                         {{ $dt }} -> {{ $data[0][$i] }}</br> 
                         <?php $i++;?>
                     @endforeach
-
+                    @endif
 
                 </p></div>
             </div>
@@ -81,7 +95,11 @@
             <div class="col-sm-12">
                 <div class="content--info col-sm side-bar">
                     <h3 style="text-align:center;">Translator</h3>
+                    @if($data == 'Rule Salah')
+                        Error
+                    @else 
                         Rule {{ $data[5] }} </br>
+                    @endif
                 </p></div>
             </div>
 

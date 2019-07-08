@@ -31,7 +31,9 @@ class InputController extends Controller
         $check_tail = RuleController::check_tail_att($parser);
 
         $check_rule = RuleController::check_rule_tree($check_tail);
-
+        if($check_rule == 'Rule Salah'){
+            return view("resultinput")->with('data',$check_rule);
+        }
         $check_rule[6] = VAController::index();
 
         $evaluator = RuleController::evaluator($check_rule);
