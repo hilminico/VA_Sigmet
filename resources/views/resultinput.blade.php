@@ -47,12 +47,16 @@
             </div>
         @else
         <table>
-            @foreach($data[6] as $dt)
+            @foreach($data[7] as $dt)
                 <div id="content-main">
                     <div class="content--info col-sm content-list">
-                        @foreach($dt[5] as $key => $dta)
+                    @for($i=0;$i <)
+
+                    @endfor
+
+                        <!-- @foreach($dt[5] as $key => $dta)
                         <tr><p clas'information'="">{{ $key }} : {{ $dta }}</p></tr>
-                        @endforeach
+                        @endforeach -->
                     </div>
                 </div>
             @endforeach

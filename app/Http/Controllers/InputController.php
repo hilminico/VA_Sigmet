@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Helper\KataController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Helper\RuleController;
+use App\slice_va;
+use DB;
 
 class InputController extends Controller
 {
@@ -37,9 +39,23 @@ class InputController extends Controller
         }
 
         $check_rule[6] = VAController::index();
-
+        
+        $i=0;
+        foreach($check_rule[6] as $dt){
+            unset($key);
+            $check_exist = DB::table('slice va')->where('id',$i)->exists();
+            if(!($check_exist)){
+                foreach($dt[5] as $key => $val){
+                    $in_arr['id'] = $i;
+                    $in_arr[$key] = $val;
+                }
+            DB::table('slice va')->insert($in_arr);
+            }
+            $i++;
+        }
+        $check_rule[6] = DB::table('slice va')->get();        
         $evaluator = RuleController::evaluator($check_rule);
-// dd($evaluator);
+    dd($evaluator);
         return view("resultinput")->with('data',$evaluator);
     }
 }

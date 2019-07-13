@@ -24,7 +24,7 @@ class VAController extends Controller
         //         return false;
         //     }
         // });
-        $getdata = Va::orderBy('id','desc')->get();
+        $getdata = Va::get();
         $index = 0 ;
         foreach($getdata as $data){
 
@@ -123,42 +123,42 @@ class VAController extends Controller
             // Slice Waktu
             $pattern_waktu = preg_match("/^[0-9]{2}:[0-9]{2}$/",$data['3'][$i]);
                 if($pattern_waktu == true){
-                    $parsedata[$index][5]['Waktu'] = $data[3][$i].' '.$data[3][$i+1];    
+                    $parsedata[$index][5]['waktu'] = $data[3][$i].' '.$data[3][$i+1];    
                 }        
             // Slice Waktu
 
             // Slice FIR
             $pattern_tempat = preg_match('/^[0-9]{2}:[0-9]{2}$/',$data['3'][$i]);
                 if($pattern_tempat == true){
-                    $parsedata[$index][5]['FIR'] = $data[3][$i+2];    
+                    $parsedata[$index][5]['fir'] = $data[3][$i+2];    
                 }        
             // Slice FIR
             
             // Slice Sigmet
             $pattern_tempat = preg_match('/^SIGMET$/',$data['3'][$i]);
                 if($pattern_tempat == true){
-                    $parsedata[$index][5]['No Sigmet'] = $data[3][$i+1];    
+                    $parsedata[$index][5]['no sigmet'] = $data[3][$i+1];    
                 }        
             // Slice Sigmet
 
             // Slice Valid
             $pattern_tempat = preg_match('/^VALID$/',$data['3'][$i]);
                 if($pattern_tempat == true){
-                    $parsedata[$index][5]['No Valid'] = $data[3][$i+1];    
+                    $parsedata[$index][5]['no valid'] = $data[3][$i+1];    
                 }        
             // Slice Valid
 
             // Slice Area Fir
             $pattern_tempat = preg_match('/^Flight Information Region/',$data['3'][$i]);
                 if($pattern_tempat == true){
-                    $parsedata[$index][5]['Area Fir'] = $data[3][$i-2];    
+                    $parsedata[$index][5]['area fir'] = $data[3][$i-2];    
                 }        
             // Slice Area Fir
 
             // Slice Name Area 
                 $pattern_tempat = preg_match('/^Flight Information Region/',$data['3'][$i]);
                 if($pattern_tempat == true){
-                    $parsedata[$index][5]['Name Area'] = $data[3][$i-1];    
+                    $parsedata[$index][5]['nama area'] = $data[3][$i-1];    
                 }        
             // Slice Name Area 
 
@@ -172,14 +172,14 @@ class VAController extends Controller
             // Slice Gunung
                 $pattern_tempat = preg_match('/^Mount$/',$data['3'][$i]);
                 if($pattern_tempat == true){
-                    $parsedata[$index][5]['Gunung'] = $data[3][$i+1];    
+                    $parsedata[$index][5]['gunung'] = $data[3][$i+1];    
                 }        
             // Slice Gunung
 
             // Slice Gunung
                 $pattern_tempat = preg_match('/^Position$/',$data['3'][$i]);
                 if($pattern_tempat == true){
-                    $parsedata[$index][5]['Posisi'] = $data[3][$i+1].' '.$data[3][$i+2];    
+                    $parsedata[$index][5]['posisi'] = $data[3][$i+1].' '.$data[3][$i+2];    
                 }        
             // Slice Gunung
 

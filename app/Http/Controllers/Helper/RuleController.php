@@ -193,38 +193,21 @@ class RuleController extends Controller
             return "Rule Salah";
         }
     }
+
     $param[5] = $stateMachine->getCurrentState();
     return $param;
-
     }
 
     public static function evaluator($param){
         // dd($param);
         $check = $param[5];
         $data_va = $param[6];
+        $count = array_count_values($param[4]);
+        // dd($param[3]);
         if($check == 'A'){
-            if($param[3][0] == "waktu") {
-                foreach($data_va as $dt){
-                    if(array_key_exists("7",$dt)){
-                    $param[7][] = $dt[5];
-                    }
-                }
-            }
-            elseif($param[3][0] == "tempat") {
-                foreach($data_va as $dt){
-                    if(array_key_exists("7",$dt)){
-                    $param[7][] = $dt[6];
-                    }
-                }
-            }
-            elseif($param[3][0] == "detail"){
-                foreach($data_va as $dt){
-                    if(array_key_exists("7",$dt)){
-                    $param[7][] = $dt[7];
-                    }
-                }
-            }
+            $i=0;
         }
+        dd($param[7]);
         return $param;
     }
 }
