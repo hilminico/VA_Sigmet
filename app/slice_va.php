@@ -9,7 +9,7 @@ class slice_va extends Model
     protected $table = 'slice va';
 
     protected $fillable = [
-        'id','detail', 'waktu', 'fir', 'no sigmet', 'no valid','area fir', 'nama area', 'event', 'gunung','posisi'
+        'id','detail', 'waktu', 'fir', 'no sigmet', 'valid','wilayah', 'area', 'event', 'gunung','posisi'
     ];
 
 }

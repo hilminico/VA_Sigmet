@@ -144,21 +144,21 @@ class VAController extends Controller
             // Slice Valid
             $pattern_tempat = preg_match('/^VALID$/',$data['3'][$i]);
                 if($pattern_tempat == true){
-                    $parsedata[$index][5]['no valid'] = $data[3][$i+1];    
+                    $parsedata[$index][5]['valid'] = $data[3][$i+1];    
                 }        
             // Slice Valid
 
             // Slice Area Fir
             $pattern_tempat = preg_match('/^Flight Information Region/',$data['3'][$i]);
                 if($pattern_tempat == true){
-                    $parsedata[$index][5]['area fir'] = $data[3][$i-2];    
+                    $parsedata[$index][5]['wilayah'] = $data[3][$i-2];    
                 }        
             // Slice Area Fir
 
             // Slice Name Area 
                 $pattern_tempat = preg_match('/^Flight Information Region/',$data['3'][$i]);
                 if($pattern_tempat == true){
-                    $parsedata[$index][5]['nama area'] = $data[3][$i-1];    
+                    $parsedata[$index][5]['area'] = $data[3][$i-1];    
                 }        
             // Slice Name Area 
 

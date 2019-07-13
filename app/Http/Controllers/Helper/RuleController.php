@@ -9,7 +9,8 @@ use Finite\State\State;
 use Finite\State\StateInterface;
 use Finite\Loader\ArrayLoader;
 use App\RuleTree;
-
+use App\slice_va;
+use DB;
 class RuleController extends Controller
 {
     public static function scanner($string){
@@ -92,27 +93,6 @@ class RuleController extends Controller
 
     }
 
-    public static function checkrule($string){
-        $explode_string = explode(' ',$string);
-
-        $length = sizeof($explode_string);
-
-        if($length == 4){
-
-            $pattern = preg_replace('/[a-z]/', '', $string);
-
-        }
-        elseif($length == 5){
-
-        }
-        if($explode_string[0] == 'tampilkan'){
-            for($i=1;$i <= sizeof($explode_string);$i++){
-
-            }
-
-        }
-    }
-
     public function check_kondisi_field($sub_str){
         $dict = array('tanggal','wilayah','seluruh','field');
         for($z=0 ; $z < sizeof($dict);$z++){
@@ -184,6 +164,8 @@ class RuleController extends Controller
     $stateMachine->setObject($document);
     $stateMachine->initialize();
     $current_state = $stateMachine->getCurrentState();
+
+// dd($param[4]);
     foreach($param[4] as $par){
         $check = $stateMachine->can($par);
         if($check == true){
@@ -199,15 +181,25 @@ class RuleController extends Controller
     }
 
     public static function evaluator($param){
-        // dd($param);
         $check = $param[5];
         $data_va = $param[6];
-        $count = array_count_values($param[4]);
-        // dd($param[3]);
-        if($check == 'A'){
-            $i=0;
+        $arr = array_count_values($param[4]);
+
+        $i=0;
+        foreach($param[4] as $att){
+            if($att == '<katatoken_attribut>'){
+                $get_att[] = $param[3][$i];
+            }
+            $i++;
         }
-        dd($param[7]);
+        
+        if($check == 'A'){
+
+            $query = DB::table('slice va')->select($get_att)->orderBy('id','desc');
+
+            $param[7] = $query->get()->toArray();
+        }
+// dd($param);
         return $param;
     }
 }

@@ -50,14 +50,10 @@
             @foreach($data[7] as $dt)
                 <div id="content-main">
                     <div class="content--info col-sm content-list">
-                    @for($i=0;$i <)
-
-                    @endfor
-
-                        <!-- @foreach($dt[5] as $key => $dta)
-                        <tr><p clas'information'="">{{ $key }} : {{ $dta }}</p></tr>
-                        @endforeach -->
+                    @foreach($dt as $key => $val)
+                        <tr><p clas'information'=""> {{ $key }} : {{ $val }}</p></tr>
                     </div>
+                    @endforeach
                 </div>
             @endforeach
         </table>

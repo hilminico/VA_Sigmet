@@ -26,14 +26,14 @@ class KataController extends Controller
     }
 
     public static function kataketerangan_dapatdiabaikan($kataketerangan){
-        $dict_kata_keterangan = array('di','pada','dari','yang','oleh','dengan','va');
+        $dict_kata_keterangan = array('di','pada','dari','yang','oleh','dengan','va','terkini','terbaru');
         $check = in_array($kataketerangan,$dict_kata_keterangan) ;
         return $check;
     }
 
     public static function katatoken_attribut($att){
         // detail, fir, no sigmet, no valid, area fir, nama area, gunung , posisi
-        $dict_att = array( 'detail' , 'tempat' , 'waktu','semua');
+        $dict_att = array( 'detail', 'fir', 'valid', 'wilayah', 'area', 'gunung' , 'posisi','waktu');
         $check = in_array($att,$dict_att) ;
         return $check;
     }
