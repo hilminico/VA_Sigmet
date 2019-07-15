@@ -68,6 +68,7 @@ class RuleController extends Controller
     public static function parser($scanner,$command){
         $arr[0] = explode(' ',$scanner);
         $arr[1] = explode(' ',$command);
+        // dd($arr);
         for($i=0 ; $i < sizeof($arr[0]) ; $i++){
             if( $arr[0][$i] == "<katatoken_attribut>"){
                 $tipe[] = $arr[0][$i];
@@ -109,10 +110,6 @@ class RuleController extends Controller
         }
     }
 
-    public function check_kondisi(){
-
-    }
-
     public function check_data_tables($sub_str){
         $dict = array('va','terkini','info');
         for($y=0 ; $y < sizeof($dict);$y++){
@@ -141,11 +138,11 @@ class RuleController extends Controller
         'class'  => 'RuleTree',
         'states' => [
             'S'    => ['type' => 'initial', 'properties' => []],
-            'A' => ['type' => 'final',  'properties' => []],
+            'A' => ['type' => 'normal',  'properties' => []],
             'B' => ['type' => 'normal',   'properties' => []],
             'C'  => ['type' => 'normal',   'properties' => []],
             'D'  => ['type' => 'normal',   'properties' => []],
-            'E'  => ['type' => 'final',   'properties' => []],
+            'E'  => ['type' => 'normal',   'properties' => []],
             'F'  => ['type' => 'normal',   'properties' => []],
             'G'  => ['type' => 'normal',   'properties' => []],
         ],
@@ -153,13 +150,12 @@ class RuleController extends Controller
             '<katatoken_attribut>' => ['from' => ['S','B'],    'to' => 'A'],
             '<katatoken_katasambung>'  => ['from' => 'A', 'to' => 'B'],
             '<katatoken_katasambung1>'  => ['from' => 'E', 'to' => 'G'],
-            '<fkondisi>' => ['from' => ['A'],    'to' => 'C'],
+            '<fkondisi>' => ['from' => ['A'],'to' => 'C'],
             'katatoken_operatornegasi'  => ['from' => ['C'], 'to' => 'D'],
             '<data>'  => ['from' => ['D'], 'to' => 'E'],
             '<katatoken_operator>' => ['from' => ['C'],    'to' => 'F'],
             '<data1>'  => ['from' => ['F'], 'to' => 'E'],
             '<data2>'  => ['from' => ['C'], 'to' => 'E'],
-            '<fkondisi>'  => ['from' => ['G'], 'to' => 'C'],
         ]
     ]);
 
@@ -169,15 +165,18 @@ class RuleController extends Controller
     $stateMachine->initialize();
     $current_state = $stateMachine->getCurrentState();
 
-// dd($param[4]);
     foreach($param[4] as $par){
         $check = $stateMachine->can($par);
+        $temp[] = $check;
         if($check == true){
             $current_state = $stateMachine->apply($par);
+            $temp[]=$stateMachine;
         }
         else{
+            dd($temp);
             return "Rule Salah";
         }
+
     }
 
     $param[5] = $stateMachine->getCurrentState();
@@ -188,11 +187,16 @@ class RuleController extends Controller
         $check = $param[5];
         $data_va = $param[6];
         $arr = array_count_values($param[4]);
-
+        // dd($param);
         $i=0;
+
         foreach($param[4] as $att){
             if($att == '<katatoken_attribut>'){
                 $get_att[] = $param[3][$i];
+            }
+            elseif($att == '<fkondisi>'){
+                $kondisi[] = $param[3][$i];
+                $kondisi[] = $param[3][$i+1];
             }
             $i++;
         }
@@ -203,7 +207,13 @@ class RuleController extends Controller
 
             $param[7] = $query->get()->toArray();
         }
-// dd($param);
+
+        if($check == 'C'){
+            $query = DB::table('slice va')->select($get_att)->orderBy('id','desc')->where($kondisi[0],$kondisi[1]);
+
+            $param[7] = $query->get()->toArray();
+        }
+
         return $param;
     }
 }
