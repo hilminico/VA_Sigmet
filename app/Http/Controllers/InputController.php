@@ -28,7 +28,7 @@ class InputController extends Controller
 
         $scanner = RuleController::scanner($command);
 
-        $parser = RuleController::parser($scanner,$command);
+        $parser = RuleController::parser($scanner[1],$scanner[0]);
 
         $check_tail = RuleController::check_tail_att($parser);
 

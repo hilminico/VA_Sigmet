@@ -15,9 +15,12 @@ class RuleController extends Controller
 {
     public static function scanner($string){
         $string = str_replace(' ', '-', $string);
-        $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); 
+        $string = preg_replace('/[^A-Za-z0-9\-.,]/', '', $string); 
         $string = str_replace('-', ' ', $string); 
+        $string = str_replace(',', ' ,', $string); 
 
+        // dd($string);
+        $parser[0] = $string;
         $string_explode = explode(' ',$string);
 
         for($i=0;$i < sizeof($string_explode); $i++){
@@ -30,35 +33,36 @@ class RuleController extends Controller
             $katatoken_katasambung = KataController::katatoken_katasambung($string_explode[$i]);
             $katatoken_operatornegasi = KataController::katatoken_operatornegasi($string_explode[$i]);
             if($katatanya_dapatdiabaikan == true){
-                $parser[$i] = "<katatanya_dapat_diabaikan>";
+                $parser[1][$i] = "<katatanya_dapat_diabaikan>";
             }
             elseif($kataperintah_dapatdiabaikan == true){
-                $parser[$i] = "<kataperintah_dapat_diabaikan>";
+                $parser[1][$i] = "<kataperintah_dapat_diabaikan>";
             }
             elseif($katapelengkap_dapatdiabaikan == true){
-                $parser[$i] = "<katapelengkap_dapatdiabaikan>";
+                $parser[1][$i] = "<katapelengkap_dapatdiabaikan>";
             }
             elseif($kataketerangan_dapatdiabaikan == true){
-                $parser[$i] = "<kataketerangan_dapatdiabaikan>";
+                $parser[1][$i] = "<kataketerangan_dapatdiabaikan>";
             }
             elseif($katatoken_attribut == true){
-                $parser[$i] = "<katatoken_attribut>";
+                $parser[1][$i] = "<katatoken_attribut>";
             }
             elseif($katatoken_operator == true){
-                $parser[$i] = "<katatoken_operator>";
+                $parser[1][$i] = "<katatoken_operator>";
             }
             elseif($katatoken_katasambung == true){
-                $parser[$i] = "<katatoken_katasambung>";
+                $parser[1][$i] = "<katatoken_katasambung>";
             }
             elseif($katatoken_operatornegasi == true){
-                $parser[$i] = "<katatoken_operatornegasi>";
+                $parser[1][$i] = "<katatoken_operatornegasi>";
             }
             else{
-                $parser[$i] = "<data>";
+                $parser[1][$i] = "<data>";
             }            
         }
-        
-        return implode(' ',$parser);
+        $parser[1] = implode(' ',$parser[1]);
+        return $parser;
+
     }
 
     public static function parser($scanner,$command){
