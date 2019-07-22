@@ -23,7 +23,9 @@
     <div class="wraper-header">
         <div class="container main">
             <div class="container--logo logo">
+            <a href="/form">
             <img src="http://localhost:8000/logo.jpeg" alt="logo">
+            </a>
             </div> <!-- End of the logo -->
 
             <form action="#" class="container--form form form1">
@@ -102,6 +104,37 @@
                     @endif
                 </p></div>
             </div>
+
+            <div class="col-sm-12">
+                <div class="content--info col-sm side-bar">
+                    <h3 style="text-align:center;">Raw Query</h3>
+                    @if($data == 'Rule Salah')
+                        Error
+                    @else 
+                        @foreach ($data[8] as $dt)
+                            {{ $dt['query'] }}
+                        @endforeach  
+                        </br>
+                    @endif
+                </p></div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="content--info col-sm side-bar">
+                    <h3 style="text-align:center;">Data Bindings</h3>
+                    @if($data == 'Rule Salah')
+                        Error
+                    @else 
+                        @foreach ($data[8] as $dt)
+                            @foreach($dt['bindings'] as $key => $value)
+                                {{ $key }} -> {{ $dta }}
+                            @endforeach
+                        @endforeach  
+                        </br>
+                    @endif
+                </p></div>
+            </div>
+
 
         </div>
     </div>

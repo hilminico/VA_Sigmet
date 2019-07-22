@@ -24,6 +24,7 @@ class VAController extends Controller
                 return false;
             }
         });
+
         $getdata = Va::get();
         $index = 0 ;
         foreach($getdata as $data){

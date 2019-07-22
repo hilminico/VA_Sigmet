@@ -164,16 +164,18 @@ class RuleController extends Controller
     $stateMachine->setObject($document);
     $stateMachine->initialize();
     $current_state = $stateMachine->getCurrentState();
-
     foreach($param[4] as $par){
         $check = $stateMachine->can($par);
         $temp[] = $check;
+        $tempc[] = $check;
+
         if($check == true){
             $current_state = $stateMachine->apply($par);
             $temp[]=$stateMachine;
         }
         else{
-            dd($temp);
+            // dd($temp);
+            dd($param[4],$temp,$tempc);
             return "Rule Salah";
         }
 
@@ -200,19 +202,26 @@ class RuleController extends Controller
             }
             $i++;
         }
-        
+        DB::enableQueryLog(); // Enable query log        
         if($check == 'A'){
-
-            $query = DB::table('slice va')->select($get_att)->orderBy('id','desc');
-
+            if(in_array('seluruh',$get_att) || in_array('semua',$get_att)){
+                $query = DB::table('slice va')->select('*')->orderBy('id','desc');
+            }else{
+                $query = DB::table('slice va')->select($get_att)->orderBy('id','desc');
+            }
             $param[7] = $query->get()->toArray();
         }
 
         if($check == 'C'){
-            $query = DB::table('slice va')->select($get_att)->orderBy('id','desc')->where($kondisi[0],$kondisi[1]);
+            if(in_array('seluruh',$get_att) || in_array('semua',$get_att)){
+                $query = DB::table('slice va')->select('*')->orderBy('id','desc')->where($kondisi[0],$kondisi[1]);
+            }else{
+                $query = DB::table('slice va')->select($get_att)->orderBy('id','desc')->where($kondisi[0],$kondisi[1]);
+            }
 
             $param[7] = $query->get()->toArray();
         }
+        $param[8] = DB::getQueryLog(); // Show results of log
 
         return $param;
     }
