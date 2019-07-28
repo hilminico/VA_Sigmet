@@ -25,7 +25,7 @@
     </div> <!-- End of the logo -->
 
     <form action="/actioninput" class="container--form form">
-      <input type="text" class="container--form--search" placeholder="Search..." name="command">
+      <input type="text" class="container--form--search" placeholder="ex : tampilkan seluruh data va sigmet" name="command">
 
       <div class="container--form--btn button-home">
         <button class="container--form--btn--submit">Sigmet Search</button>

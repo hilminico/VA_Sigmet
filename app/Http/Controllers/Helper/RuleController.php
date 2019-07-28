@@ -142,20 +142,12 @@ class RuleController extends Controller
             'B' => ['type' => 'normal',   'properties' => []],
             'C'  => ['type' => 'normal',   'properties' => []],
             'D'  => ['type' => 'normal',   'properties' => []],
-            'E'  => ['type' => 'normal',   'properties' => []],
-            'F'  => ['type' => 'normal',   'properties' => []],
-            'G'  => ['type' => 'normal',   'properties' => []],
         ],
         'transitions' => [
             '<katatoken_attribut>' => ['from' => ['S','B'],    'to' => 'A'],
             '<katatoken_katasambung>'  => ['from' => 'A', 'to' => 'B'],
-            '<katatoken_katasambung1>'  => ['from' => 'E', 'to' => 'G'],
-            '<fkondisi>' => ['from' => ['A'],'to' => 'C'],
-            'katatoken_operatornegasi'  => ['from' => ['C'], 'to' => 'D'],
-            '<data>'  => ['from' => ['D'], 'to' => 'E'],
-            '<katatoken_operator>' => ['from' => ['C'],    'to' => 'F'],
-            '<data1>'  => ['from' => ['F'], 'to' => 'E'],
-            '<data2>'  => ['from' => ['C'], 'to' => 'E'],
+            '<katatoken_katasambung1>'  => ['from' => 'C', 'to' => 'D'],
+            '<fkondisi>' => ['from' => ['A','D'],'to' => 'C'],
         ]
     ]);
 
@@ -165,17 +157,18 @@ class RuleController extends Controller
     $stateMachine->initialize();
     $current_state = $stateMachine->getCurrentState();
     foreach($param[4] as $par){
-        $check = $stateMachine->can($par);
-        $temp[] = $check;
-        $tempc[] = $check;
+        if($stateMachine->getCurrentState() == "C"){
+            $par = str_replace('<katatoken_katasambung>','<katatoken_katasambung1>',$par);
+        }
 
+        $check = $stateMachine->can($par);
         if($check == true){
             $current_state = $stateMachine->apply($par);
             $temp[]=$stateMachine;
         }
         else{
-            // dd($temp);
-            dd($param[4],$temp,$tempc);
+            dd($current,$temp,$tempc);
+
             return "Rule Salah";
         }
 
@@ -191,17 +184,20 @@ class RuleController extends Controller
         $arr = array_count_values($param[4]);
         // dd($param);
         $i=0;
-
+        $count =0;
         foreach($param[4] as $att){
             if($att == '<katatoken_attribut>'){
                 $get_att[] = $param[3][$i];
             }
             elseif($att == '<fkondisi>'){
-                $kondisi[] = $param[3][$i];
-                $kondisi[] = $param[3][$i+1];
+                $kondisi[] = $param[3][$i+$count];
+                $kondisi[] = $param[3][$i+$count+1];
+                $count++;
             }
             $i++;
         }
+        // dd($param,$kondisi);
+
         DB::enableQueryLog(); // Enable query log        
         if($check == 'A'){
             if(in_array('seluruh',$get_att) || in_array('semua',$get_att)){
@@ -214,9 +210,16 @@ class RuleController extends Controller
 
         if($check == 'C'){
             if(in_array('seluruh',$get_att) || in_array('semua',$get_att)){
-                $query = DB::table('slice va')->select('*')->orderBy('id','desc')->where($kondisi[0],$kondisi[1]);
+                $query = DB::table('slice va')->select('*')->orderBy('id','desc');
             }else{
-                $query = DB::table('slice va')->select($get_att)->orderBy('id','desc')->where($kondisi[0],$kondisi[1]);
+                $query = DB::table('slice va')->select($get_att)->orderBy('id','desc');
+            }
+            $i=0;
+            foreach($param[4] as $loop){
+                if($loop == "<fkondisi>"){
+                    $query = $query->where($kondisi[$i],$kondisi[$i+1]);
+                    $i =$i+2;
+                }
             }
 
             $param[7] = $query->get()->toArray();

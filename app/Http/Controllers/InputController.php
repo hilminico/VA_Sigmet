@@ -45,7 +45,6 @@ class InputController extends Controller
 
     public function inputhandling(Request $request){
 
-        $parser[9] = $request->command;
         $command = strtolower($request->command);
 
         $scanner = RuleController::scanner($command);
@@ -61,8 +60,9 @@ class InputController extends Controller
         }
 
         $check_rule[6] = VAController::index();
-  
         $evaluator = RuleController::evaluator($check_rule);
+        $evaluator[9] = $request->command;
+        // dd($evaluator);
         return view("resultinput")->with('data',$evaluator);
     }
 }

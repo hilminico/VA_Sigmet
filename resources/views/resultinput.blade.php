@@ -29,7 +29,7 @@
             </div> <!-- End of the logo -->
 
             <form action="#" class="container--form form form1">
-            <input class="container--form--search search1" placeholder="Search..." name="command" type="text">
+            <input class="container--form--search search1" placeholder="Search..." name="command" type="text" value="{{ $data[9] }}">
 
             <div class="container--form--btn btn1">
                 <button class="container--form--btn--submit result ion-ios-search"></button>
